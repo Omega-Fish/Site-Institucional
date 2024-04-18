@@ -1186,3 +1186,92 @@ Tela de Contato
 }
 
 
+/* 
+
+
+Simulador Financeiro 
+
+
+*/
+
+.body_cadastro {
+  border: none;
+  background-image: url('Assets/Imagens/image\ 10\ \(1\)\ 1.png');
+  background-repeat: no-repeat;
+  background-position-x: center;
+}
+
+.simulador {
+  margin-top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 550px;
+  width: auto;
+
+}
+
+
+.simulador .inputs3 {
+  width: 45%;
+  color: rgb(255, 255, 255);
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 90%;
+  background-color: #111111;
+  border: solid 3px #00C3FF;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  
+}
+
+.inputs3 {
+  border: solid 3px #32b9cd;
+  border-radius: 9px;
+
+}
+
+.inputs3 input {
+  background-color: #111111;
+  color: #fff;
+  width: 70%;
+  border: none;
+  border-bottom: 1px solid rgb(255, 255, 255);
+  margin-top: 10px;
+  height: 60px;
+}
+
+.inputs3 .span {
+  font-size: 13px;
+  font-weight: 700;
+  width: 70%;
+  text-align: start;
+}
+
+.inputs3 .span2 {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+
+.inputs3 ::placeholder {
+  color: rgba(145, 143, 143, 0.863);
+}
+
+.inputs3 h1 {
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+
+#div_mensagem{
+ 
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 20px;
+ 
+}
+

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+.container {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Align items vertically */
+  width: 200px; /* Initial width */
+  background-color: lightgray;
+  overflow: hidden; /* Ensures that content doesn't overflow when expanding */
+  transition: width 0.5s; /* Smooth transition animation */
+}
+
+.expanded {
+  width: 400px; /* Expanded width */
+}
+
+.button-wrapper {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Align items vertically */
+  justify-content: flex-start; /* Align items to the left */
+}
+
+.content {
+  padding: 10px;
+}
+
+.phrase {
+  display: none; /* Initially hide the phrase */
+}
+
+.container.expanded .phrase {
+  display: block; /* Show the phrase when container is expanded */
+}
+
+
+</style>
+
+<body>
+
+    <div class="container" id="container">
+        <div class="button-wrapper">
+          <button onclick="expand()">Show Phrase</button>
+          <div class="content" id="content">
+            <p class="phrase">This is the phrase that will be shown when the button is clicked.</p>
+          </div>
+        </div>
+      </div>
+      
+</body>
+</html>
+
+<script>
+function expand() {
+  var container = document.getElementById("container");
+  container.classList.toggle("expanded");
+}
+
+
+
+</script>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="Assets/Imagens/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body class="body_cadastro">
+    <header>
+        <a href="index.html">
+            <div class="logo"><img src="Assets/Imagens/Ômega Fish.png" alt="Logo"></div>
+        </a>
+        <div class="menu">
+            <nav>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="contato.html">CONTATO</a></li>
+                    <li><a href="#">SIMULADOR</a></li>
+                    <li><a href="#">DASHBOARD</a></li>
+                    <li class="cadastro"><a href="#"> <img src="Assets/Imagens/SVG.png" alt=""></li>
+                    <li class="Imagem"><a href="login.html">Bem Vindo(a) <br><b>Entrar</b> ou <b>Cadastrar</b></a></li>
+
+                </ul>
+
+            </nav>
+        </div>
+
+    </header>
+
+    <section class="simulador">
+        <div class="inputs3">
+            <h1>Simulador Financeiro</h1><br>
+
+            <span class="span">Insira o total de peixe em KG: </span><input type="text" id="input_kgpeixe"
+                placeholder="Digite o total de peixe em KG">
+            <span class="span"> Insira o valor do peixe/KG em reais: </span><input type="text" id="input_valorkg"
+                placeholder="Digite o valor em reais"><br>
+
+            <button class="botão" onclick="calcular()">Calcular</button> <br>
+
+            <div id="div_mensagem" class="resultado"></div>
+            
+            </div>
+
+    </section>
+
+</body>
+
+</html>
+
+<script>
+
+    function calcular() {
+        kgpeixe = Number(input_kgpeixe.value);
+        valorkg = Number(input_valorkg.value);
+        bruto = kgpeixe * valorkg;
+        perda = bruto * 0.3;
+        liquido = bruto - (bruto * 0.3);
+        lucro1 = bruto * 0.15;
+        lucro2 = bruto - (bruto * 0.15);
+        lucro3 = lucro2 - liquido;
+        lucroanual = lucro3 * 12;
+
+
+        if (kgpeixe = "" || valorkg == "") {
+
+            alert(`Insira um número`)
+        }
+         else {
+
+            div_mensagem.innerHTML =
+
+                `O valor bruto da sua mercadoria é de <span style="color: #00C3FF;"> R$${bruto}</span><br>
+        O prejuízo sem a nossa solução é de <span style="color: red;">30%</span> da mercadoria (<span style="color: red;">R$${perda}</span>). Totalizando um valor líquido de <span style="color: red;">R$${liquido}</span> <br>
+        Com a nossa solução, seu prejuízo diminuiria para apenas <span style="color: #00FF00;">15%</span> (<span style="color: #00FF00;">R$${lucro1}</span>). Totalizando um valor líquido de <span style="color: #00FF00;">R$${lucro2} </span><br>
+        Seu lucro mensal portanto, é de  <span style="color: #00FF00;">R$${lucro3}</span>. Totalizando um lucro anual de  <span style="color: #00FF00;">R$${lucroanual}</span>`;
+
+        }
+
+    }
+
+</script>
