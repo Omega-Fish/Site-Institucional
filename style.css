@@ -975,12 +975,12 @@ Tela de Cadastro
 .tela_cadastro2 .inputs2 {
   width: 35%;
   color: rgb(255, 255, 255);
-  margin-top: 20px;
+  margin-top: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 90%;
+  height: 800px;
   background-color: #111111;
   border: solid 3px #00C3FF;
   font-family: Arial, Helvetica, sans-serif;
@@ -1009,6 +1009,15 @@ Tela de Cadastro
   text-align: start;
 }
 
+/* estilização da mensagem de erro */
+.inputs2 .msg_erro{
+  width: 75%;
+  color: #FF0000;
+  font-size: 14px;
+  margin-top: 2px;
+  display: none;
+}
+
 .inputs2 .span2 {
   text-align: center;
   font-size: 12px;
@@ -1028,7 +1037,7 @@ Tela de Cadastro
 .inputs2 .input1 {
   padding-left: 30px;
   background-image: url('Assets/Imagens/CadastroVector\ \(6\).png');
-  background-size: 5%;
+  background-size: 4%;
   background-repeat: no-repeat;
   background-position: 5px center;
   /* Posição do ícone */
@@ -1037,7 +1046,7 @@ Tela de Cadastro
 .inputs2 .input2 {
   padding-left: 30px;
   background-image: url('Assets/Imagens/CadastroVector\ \(7\).png');
-  background-size: 5%;
+  background-size: 4%;
   background-repeat: no-repeat;
   background-position: 5px center;
   /* Posição do ícone */
@@ -1046,7 +1055,7 @@ Tela de Cadastro
 .inputs2 .input3 {
   padding-left: 30px;
   background-image: url('Assets/Imagens/CadastroVector\ \(7\).png');
-  background-size: 5%;
+  background-size: 4%;
   background-repeat: no-repeat;
   background-position: 5px center;
   /* Posição do ícone */
@@ -1055,7 +1064,7 @@ Tela de Cadastro
 .inputs2 .input3 {
   padding-left: 30px;
   background-image: url('Assets/Imagens/CadastroVector\ \(6\).png');
-  background-size: 5%;
+  background-size: 4%;
   background-repeat: no-repeat;
   background-position: 5px center;
   /* Posição do ícone */

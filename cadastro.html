@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>OmegaFish - Cadastro</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="Assets/Imagens/favicon.ico" type="image/x-icon">
+    <script src="./index.js"></script>
 </head>
 <body class="body_cadastro">
     <header>
@@ -15,11 +16,10 @@
             <ul>
               <li><a href="index.html">HOME</a></li>
               <li><a href="contato.html">CONTATO</a></li>
-              <li><a href="#">SIMULADOR</a></li>
+              <li><a href="simuladorfinanceiro.html">SIMULADOR</a></li>
               <li><a href="#">DASHBOARD</a></li>
               <li class="cadastro"><a href="#"> <img src="Assets/Imagens/SVG.png" alt=""></li> 
               <li class="Imagem"><a href="login.html">Bem Vindo(a) <br><b>Entrar</b> ou <b>Cadastrar</b></a></li>
-              
             </ul>
             
           </nav>
@@ -30,22 +30,32 @@
       <section class="tela_cadastro2">
         <div class="inputs2">
            <h1>Cadastro</h1>
-            <span class="span">Usuário:</span> <input type="text" id="ipt_nome" class="input1" placeholder="Digite seu usuário"> 
+            <span class="span">Usuário:</span> <input type="text" id="ipt_nome" class="input1" placeholder="Digite seu usuário">
+            <span class="msg_erro" id="erro_usuario">Usuário precisa ter mais que 2 caracteres</span>
             <br> 
-            <span class="span">Senha:</span> <input type="text" id="ipt_senha" class="input2" placeholder="Digite sua senha">
-            <br> 
-            <span class="span">Cpf / Cnpj:</span> <input type="text" id="ipt_cnpj_cpf" class="input3" placeholder="Digite seu Cnpj ou Cpf">
+            <span class="span">Senha: (entre 6 a 12 caracteres)</span> <input type="text" id="ipt_senha" class="input2" placeholder="Digite sua senha">
+            <span class="msg_erro" id="erro_senha">A Senha precisa ter mais que 5 caracteres <br> e 1 caracter especial</span>
+            <br>
+            <span class="span">Confirmar Senha:</span> <input type="text" id="ipt_confirmar_senha" class="input2" placeholder="Digite novamente sua senha">
+            <span class="msg_erro" id="erro_confirmar_senha">As Senhas não são idênticas</span>
+            <br>
+            <span class="span">CPF: (somente numeral)</span> <input type="text" id="ipt_cpf" class="input3" placeholder="Digite seu CPF">
+            <span class="msg_erro" id="erro_cpf">O CPF precisa ter 11 digitos</span>
             <br> 
             <span class="span">Email:</span> <input type="text" id="ipt_email" class="input4" placeholder="Digite seu email">
+            <span class="msg_erro" id="erro_email">E-mail Inválido</span>
             <br> 
-            <span class="span">Telefone:</span> <input type="text" id="ipt_telefone" class="input5" placeholder="Digite seu telefone">
-            
-            <br> 
+            <span class="span">Telefone Celular:</span> <input type="text" id="ipt_telefoneCel" class="input5" placeholder="Digite seu telefone celular">
+            <span class="msg_erro" id="erro_celular">Telefone Celular Inválido</span>
+            <br>
+            <span class="span">Telefone Fixo (opcional):</span> <input type="text" id="ipt_telefoneFix" class="input5" placeholder="Digite seu telefone fixo">
+            <span class="msg_erro" id="erro_fixo">Telefone Fixo Inválido</span>
+            <br>
             <span class="span">Chave de Acesso:</span> <input type="text" id="ipt_chave" class="input6" placeholder="Digite sua chave">
-            
+            <span class="msg_erro" id="erro_chave">Chave de Acesso inválida</span>
             <br> 
       
-           <button class="botão">Cadastrar</button> <br>
+           <button class="botão" onclick="cadastrar()">Cadastrar</button> <br>
            <a href="contato.html">
            <span class="span2">Não possui uma chave de acesso? Contate-nos</span>
           </a> <br>
