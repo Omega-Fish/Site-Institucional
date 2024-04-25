@@ -32,7 +32,7 @@
 
     </header>
 
-    <section class="simulador">
+    <section class="simulador" id="div_calculo">
         <div class="inputs3">
             <h1>Simulador Financeiro</h1><br>
 
@@ -59,12 +59,12 @@
         kgpeixe = Number(input_kgpeixe.value);
         valorkg = Number(input_valorkg.value);
         bruto = kgpeixe * valorkg;
-        perda = bruto * 0.3;
-        liquido = bruto - (bruto * 0.3);
-        lucro1 = bruto * 0.15;
-        lucro2 = bruto - (bruto * 0.15);
+        perda = (bruto * 0.3).toFixed(2);
+        liquido = (bruto - (bruto * 0.3)).toFixed(2);
+        lucro1 = (bruto * 0.15).toFixed(2);
+        lucro2 = (bruto - (bruto * 0.15)).toFixed(2);
         lucro3 = lucro2 - liquido;
-        lucroanual = lucro3 * 12;
+        lucroanual = (lucro3 * 12).toFixed(2);
 
 
         if (kgpeixe = "" || valorkg == "") {
@@ -73,15 +73,24 @@
         }
          else {
 
-            div_mensagem.innerHTML =
+            div_mensagem.innerHTML =`
+                O valor bruto da sua mercadoria é de <span style="color: #00C3FF;"> R$${bruto}</span><br>
+                O prejuízo sem a nossa solução é de <span style="color: red;">30%</span> da mercadoria (<span style="color: red;">R$${perda}</span>). Totalizando um valor líquido de <span style="color: red;">R$${liquido}</span> <br>
+                Com a nossa solução, seu prejuízo diminuiria para apenas <span style="color: #00FF00;">15%</span> (<span style="color: #00FF00;">R$${lucro1}</span>). Totalizando um valor líquido de <span style="color: #00FF00;">R$${lucro2} </span><br>
+                Seu lucro mensal portanto, é de: <br><br>
+            `;
 
-                `O valor bruto da sua mercadoria é de <span style="color: #00C3FF;"> R$${bruto}</span><br>
-        O prejuízo sem a nossa solução é de <span style="color: red;">30%</span> da mercadoria (<span style="color: red;">R$${perda}</span>). Totalizando um valor líquido de <span style="color: red;">R$${liquido}</span> <br>
-        Com a nossa solução, seu prejuízo diminuiria para apenas <span style="color: #00FF00;">15%</span> (<span style="color: #00FF00;">R$${lucro1}</span>). Totalizando um valor líquido de <span style="color: #00FF00;">R$${lucro2} </span><br>
-        Seu lucro mensal portanto, é de  <span style="color: #00FF00;">R$${lucro3}</span>. Totalizando um lucro anual de  <span style="color: #00FF00;">R$${lucroanual}</span>`;
+            for (var contador = 1; contador <=12; contador++) {
+                div_mensagem.innerHTML += `
+                    ${contador}º Mês:<span style="color: #00FF00;"> R$${(lucro3*contador).toFixed(2)}</span>.<br>
+                `;
+            }
+            div_mensagem.innerHTML += `<br>Totalizando um lucro anual de <span style="color: #00FF00;">R$${lucroanual}</span>`
+
+            div_calculo.style.height = '830px'
 
         }
 
     }
-
+    
 </script>
