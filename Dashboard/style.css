@@ -1,0 +1,384 @@
+body {
+    margin: 0;
+}
+
+.headers {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+}
+
+/* Section 1 */
+
+.sidebar {
+    width: 15%;
+    height: 100vh;
+    border-right: 3px solid #00C3FF;
+    display: flex;
+    flex-direction: column;
+    background-color: #111111;
+    color: white;
+    align-items: center;
+    transition: width 0.7s ease;
+}
+
+.retrair {
+    width: 0;
+}
+
+.sidebar img {
+    width: 85%;
+    margin-top: -5px;
+}
+
+
+.sidebar li {
+    display: flex;
+    align-items: center;
+    text-align: start;
+    cursor: pointer;
+    overflow: hidden;
+    font-size: 22px;
+    border-radius: 6px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    user-select: none; /* Impede a seleção do texto */
+    background-color: #1d1d1d;
+    padding: 15px 20px;
+    width: 70%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.6s, opacity 0.3s ease, width 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.sidebar-end li {
+    padding: 10px 20px;
+}
+.sidebar li .texto {
+    font-size: 17px;
+    margin-left: 10px;
+    margin-top: -2px;
+}
+
+.sidebar.retrair li {
+    opacity: 0; /* Torna os itens da barra lateral transparentes quando recolhidos */
+    pointer-events: none; /* Desativa os eventos de mouse nos itens da barra lateral recolhida */
+}
+
+.sidebar li:hover {
+    background-color: #00c3ff;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-end {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    padding-bottom: 40px;
+    width: 100%;
+    height: 100%;
+
+}
+
+
+/* Section 2 */
+
+.header {
+    display: flex;
+    align-items: center;
+    background-color: #111111;
+    border-bottom: 3px solid #00C3FF;
+    width: 100%;
+    height: 50px;
+    color: white;
+}
+
+.header li {
+    margin-left: 30px;
+    font-size: 35px;
+    color: #00C3FF;
+    cursor: pointer;
+}
+
+.header .settings {
+    margin-right: -30px;
+}
+
+.header h3 {
+    margin-left: 20px;
+}
+
+.header-end li {
+    margin-top: 18px;
+    font-size: 25px;
+    margin-right: 20px;
+}
+
+.header-end {
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    margin-right: 60px;
+}
+
+.bx.bx-list-ul.toggle {
+    color: #00C3FF;
+}
+
+.corpo {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    transition: width 0.5s ease;
+}
+
+.corpo.retrair {
+    width: 100%;
+}
+.div_pai {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: background-color ease 0.8s;
+}
+
+.conteudo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.light {
+    background-color: rgb(255, 255, 255);
+}
+
+.popup {
+    display: none;
+    opacity: 0;
+    border: solid 3px #00C3FF;
+    padding: 20px;
+    border-radius: 9px;
+    width: 60%;
+    height: 60%;
+    background-color: rgb(255, 255, 255);
+    animation: fadeInPopup 0.3s ease forwards;
+}
+
+@keyframes fadeInPopup {
+    from {
+        opacity: 0;
+        
+    }
+    to {
+        opacity: 0.7;
+    }
+}
+
+
+
+/* 
+
+
+Conteudo / Gráficos
+
+
+*/
+
+.conteudo .tab {
+    overflow: hidden;
+    width: 500px;
+    height: 330px;
+    
+}
+
+/* botão da aba */
+.conteudo .tab button {
+    background-color: #000107;
+    color: #00C3FF;
+    float: left;
+    border: solid 1px #00C3FF;
+    outline: none;
+    font-size: 13px;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.conteudo .primeiro_botao {
+   border-top-left-radius: 10px;
+   border-bottom-left-radius: 10px;
+}
+
+.conteudo .ultimo_botao {
+   border-top-right-radius: 10px;
+   border-bottom-right-radius: 10px;
+}
+
+/* botão clicado */
+.conteudo .tab button.active {
+    background-color: #00C3FF;
+    color: #ffffff;
+}
+
+
+/* conteúdo da aba */
+.conteudo .tabcontent, .tabcontent2 {
+    display: none;
+    padding: 20px;
+}
+
+/* efeito fade in */
+.conteudo .fade-in {
+    animation: fadeIn ease 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.conteudo .container {
+    border: solid 3px #ffffff;
+    border-radius: 9px;
+    background: linear-gradient(180deg, rgba(1, 1, 1, 1) 0%, rgba(0, 3, 35, 1) 100%);
+    width: fit-content;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #fff;
+    font-size: 20px;
+    margin: 0px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* legenda do eixo x */
+
+.conteudo .legenda-x {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    color: #ffffff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+}
+
+.conteudo .header_tab {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 30px;
+    align-items: center;
+}
+
+.conteudo .titulo {
+    width: 50%;
+    margin-top: 25px;
+    text-align: center;
+}
+
+.conteudo .botões {
+    margin-top: 30px;
+    width: 90%;
+    margin-right: 10px;
+}
+
+/* 
+
+Gráfico Gauge 
+
+*/
+.div_pai_container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+    .chartCard1 {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .chartCard2 {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    justify-content: center;
+  }
+  .container_chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .container_chart h1{
+    color: white;
+    font-size: 20px;
+
+  }
+  .chartBox {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    margin: 0px 20px;
+    padding: 20px;
+    border-radius: 20px;
+    border: solid 3px rgb(255, 255, 255);
+    background: linear-gradient(to bottom, #000000, rgb(0, 1, 39));
+  }
+
+  .digital {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    color: white;
+    text-align: center;
+    border: solid 3px white;
+    padding: 0px 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+  .digital h1{
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+  }
+  .digital img{
+    width: 23%;
+    height: 23%;
+    margin-top: -5px;
+    margin-right: 8px;
+  }
+
+  .titulo_chart {
+    height: 50px;
+    color: rgb(0, 192, 0);
+    margin-top: -50px;
+  }
+
+  .descricao_chart {
+    display: flex;
+    flex-direction: row;
+    font-weight: 800;
+    font-size: 15px;
+    height: 30px;
+    color: rgb(0, 192, 0);
+  }
+  .descricao_chart h5{
+    margin: 15px 10px;
+  }

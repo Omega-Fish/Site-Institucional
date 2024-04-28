@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="Funcionalidades.js"></script>
+    <script src="Gráficos.js"></script>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="headers">
+        <section id="sidebar" class="sidebar">
+            <img src="assets/imagens/Ômega Fish.png" alt="">
+
+
+            <li class="bx bx-home-alt icon"> <span class="texto">Dashboard</span></li>
+
+            <li class="bx bx-notepad"> <span class="texto">Comunicados</span> </li>
+            <li class="bx bx-cog"> <span class="texto">Configurações</span> </li>
+            <li class="bx bx-refresh"> <span class="texto">Atualizações</span> </li>
+
+            <div class="sidebar-end">
+                <li class="bx bx-user-circle"> <span class="texto">Logout</span></li>
+                <li id="mode" class="bx bx-sun"> <span id="modeText" class="mode-text texto">Light Mode</span></li>
+            </div>
+        </section>
+        <div id="corpo" class="corpo">
+            <section class="header">
+                <li id="toggle" class="bx bx-list-ul toggle"></li>
+                <h3>Dashboard</h3>
+                <div class="header-end">
+                    <li class='bx bx-search-alt-2'></li>
+                    <li class='bx bx-bell' onclick="exibirPopup() "></li>
+
+                    <li onclick="AtivarDesativarFS()" class='bx bx-fullscreen'></li>
+                    <h3>Josh Burton</h3>
+                    <li class='bx bx-cog settings'></li>
+                </div>
+            </section>
+            <section id="conteudo" class="div_pai">
+                <div class="div_pai_container">
+
+                
+                <div class="chartCard1">
+                    <div class="container_chart">
+                        <h1>Temperatura Em Tempo Real</h1>
+                        <div class="chartBox">
+                            <div class="digital">
+                               <img src="assets/imagens/Design sem nome - 2024-04-18T002013 1(1).png" alt=""><h1>55°C</h1>
+                            </div>
+                          <canvas id="myChart"></canvas>
+                          <div class="titulo_chart">
+                            <h3>Controlado</h3>
+                        </div>
+                        <div class="descricao_chart">
+                            <h5 style="color: green;">Controlado </h5>
+                            <h5 style="color: yellow;"> Instável</h5>
+                            <h5 style="color: red;">Emergência</h5>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chartCard2">
+                    <div class="container_chart">
+                        <h1>Umidade Em Tempo Real</h1>
+                        <div class="chartBox">
+                            <div class="digital">
+                               <img src="assets/imagens/Design sem nome - 2024-04-18T001947 1.png" alt=""><h1>55%</h1>
+                            </div>
+                          <canvas id="myChart2"></canvas>
+                          <div class="titulo_chart">
+                            <h3>Controlado</h3>
+                        </div>
+                        <div class="descricao_chart">
+                            <h5 style="color: green;">Controlado </h5>
+                            <h5 style="color: yellow;"> Instável</h5>
+                            <h5 style="color: red;">Emergência</h5>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    
+                <div class="conteudo">
+                    <div class="container">
+                        <div class="tab">
+
+                            <div class="header_tab">
+                                <div class="titulo">
+                                    <h3>Temperatura</h3>
+                                </div>
+
+                                <div class="botões">
+                                    <button class="tablinks active primeiro_botao"
+                                        onclick="openTab(event, 'chartTab1')">Tempo Real</button>
+                                    <button class="tablinks" onclick="openTab(event, 'chartTab2')">Última
+                                        Semana</button>
+                                    <button class="tablinks ultimo_botao" onclick="openTab(event, 'chartTab3')">Último
+                                        Mês</button>
+                                </div>
+                            </div>
+
+
+                            <div id="chartTab1" class="tabcontent" style="display: block;">
+                                <canvas id="Temp_TempoReal"></canvas>
+                                <div class="legenda-x">
+                                    <span>Tempo (Segundos)</span>
+                                </div>
+                            </div>
+
+                            <div id="chartTab2" class="tabcontent">
+                                <canvas id="Temp_Semana"></canvas>
+                                <div class="legenda-x">
+                                    <span>Tempo (Semanas)</span>
+                                </div>
+                            </div>
+
+                            <div id="chartTab3" class="tabcontent">
+                                <canvas id="Temp_Mes"></canvas>
+                                <div class="legenda-x">
+                                    <span>Tempo (Mês)</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="container">
+
+                        <div class="tab">
+                            <div class="header_tab">
+                                <div class="titulo">
+                                    <h3>Umidade</h3>
+                                </div>
+
+                                <div class="botões">
+                                    <button class="tablinks2 active primeiro_botao"
+                                        onclick="openTab2(event, 'chartTab4')">Tempo Real</button>
+                                    <button class="tablinks2" onclick="openTab2(event, 'chartTab5')">Última
+                                        Semana</button>
+                                    <button class="tablinks2 ultimo_botao" onclick="openTab2(event, 'chartTab6')">Último
+                                        Mês</button>
+                                </div>
+                            </div>
+
+
+
+                            <div id="chartTab4" class="tabcontent2" style="display: block;">
+                                <canvas id="Umid_TempoReal"></canvas>
+                                <div class="legenda-x">
+                                    <span>Tempo (Segundos)</span>
+                                </div>
+                            </div>
+
+                            <div id="chartTab5" class="tabcontent2">
+                                <canvas id="Umid_Semana"></canvas>
+                                <div class="legenda-x">
+                                    <span>Tempo (Semanas)</span>
+                                </div>
+                            </div>
+
+                            <div id="chartTab6" class="tabcontent2">
+                                <canvas id="Umid_Mes"></canvas>
+                                <div class="legenda-x">
+                                    <span>Tempo (Mês)</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="popup" class="popup">
+                        <h2>Notificações</h2>
+                        <p>Aqui estão as suas notificações...</p>
+                    </div>
+                </div>
+                
+            </section>
+
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    // setup 
+const data = {
+  labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+  datasets: [{
+    label: 'Weekly Sales',
+    data: [15, 15, 15, 15, 15, 15, 15],
+    backgroundColor: [
+        'rgba(255, 0, 0)', //vermelho
+        'rgba(255, 255, 0)', //amarelo
+        'rgba(0, 128, 0)', //verde
+        'rgba(0, 128, 0)', //verde
+        'rgba(0, 128, 0)', //verde
+        'rgba(255, 255, 0)', //amarelo
+        'rgba(255, 0, 0)', //vermelho
+
+
+    ],
+    borderColor: [
+    'rgba(0, 0, 0)', //vermelho
+        'rgba(0, 0, 0)', //amarelo
+        'rgba(0, 0, 0)', //verde
+        'rgba(0, 0, 0)', //amarelo
+        'rgba(0, 0, 0)', //vermelho
+    ],
+    borderWidth: 1, 
+    circumference: 180,
+    rotation: 270,
+    cutout: '80%',
+    needleValue: 34.5
+  }]
+};
+const gaugeNeedle = {
+    id:'gaugeNeedle',
+    afterDatasetsDraw(chart, args, plugins) {
+        const {ctx, data} = chart;
+
+        ctx.save();
+        const xCenter = chart.getDatasetMeta(0).data[0].x;
+        const yCenter = chart.getDatasetMeta(0).data[0].y;
+        const outerRadius = chart.getDatasetMeta(0).data[0].outerRadius;
+        const innerRadius = chart.getDatasetMeta(0).data[0].innerRadius;
+        const widthSlice = (outerRadius - innerRadius) / 2;
+        const radius = outerRadius / 10; // Ajuste o tamanho do ponteiro aqui (por exemplo, 1/10 do raio externo)
+        const angle = Math.PI / 180
+        
+        const needleValue = data.datasets[0].needleValue;
+        
+        const dataTotal = data.datasets[0].data.reduce((a, b) => a + b, 0);
+        
+        const circumference = ((chart.getDatasetMeta(0).data[0].circumference / Math.PI) / data.datasets[0].data[0]) * needleValue;
+
+        ctx.translate(xCenter, yCenter);
+        ctx.rotate(Math.PI * (circumference + 1.5));
+
+        ctx.beginPath();
+
+        ctx.strokeStyle = 'black';
+        ctx.fillStyle = '#00C3FF'
+        ctx.lineWidth = 1;
+        
+
+        ctx.moveTo(0 - radius, 0);
+        ctx.lineTo(0, 0 - innerRadius - widthSlice);
+        ctx.lineTo(0 + radius, 0);
+
+        ctx.closePath();
+        ctx.stroke();
+        ctx.fill();
+
+        //círculo no meio
+
+        ctx.beginPath();
+        ctx.arc(0, 0, radius, 0, angle * 360, false);
+        ctx.fill();
+        ctx.restore();
+    }
+}
+// gaugeFlowMeter plugin block
+const gaugeFlowMeter = {
+    id: 'gaugeFlowMeter',
+    afterDatasetsDraw(chart, args, plugins) {
+        const {ctx, data} = chart;
+
+        ctx.save();
+        const needleValue = data.datasets[0].needleValue;
+        const xCenter = chart.getDatasetMeta(0).data[0].x;
+        const yCenter = chart.getDatasetMeta(0).data[0].y;
+        
+        const circumference = ((chart.getDatasetMeta(0).data[0].circumference / Math.PI) / data.datasets[0].data[0]) * needleValue;
+        const percentageValue = circumference * 100;
+
+        // flowMeter
+        ctx.font = 'bold 30px sans-serif';
+        ctx.fillStyle = 'grey';
+        ctx.textAlign = 'center';
+        ctx.fillText(`${percentageValue.toFixed(1)}%`, xCenter, yCenter + 45);
+
+    }
+}
+// config 
+const config = {
+  type: 'doughnut',
+  data,
+  options: {
+    layout: {
+        padding: {
+            bottom: 50
+        }
+    },
+    aspectRatio: 1.7,
+    plugins: {
+        legend: {
+            display: false
+        },
+        tooltip: {
+            enabled: false
+        }
+    }
+  },
+  plugins: [gaugeNeedle]
+};
+
+// render init block
+const myChart = new Chart(
+  document.getElementById('myChart'),
+  config
+);
+const myChart2 = new Chart(
+  document.getElementById('myChart2'),
+  config
+);
+// Instantly assign Chart.js version
+const chartVersion = document.getElementById('chartVersion');
+chartVersion.innerText = Chart.version;
+
+</script>
