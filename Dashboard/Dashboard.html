@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
     <script src="Funcionalidades.js"></script>
     <script src="Gráficos.js"></script>
 </head>
@@ -45,142 +46,195 @@
                 </div>
             </section>
             <section id="conteudo" class="div_pai">
-                <div class="div_pai_container">
+                
+                <div class="primeira_div">
+                    <div class="KPIS">
+                        <div class="kpi1">
+                            <div class="titulo">
+                                <h1> <span style="color: #00C3FF;">Temperatura</span> em Tempo real</h1>
+                            </div>
+                            <div class="digital"><img src="assets/imagensdash/termometro.png " alt=""> <h2> -2C°</h2></div>
+                        
+                        </div>
+                        <div class="kpi2">
+                            <div class="titulo">
+                                <h1><span style="color: #00C3FF;">Umidade</span> em Tempo real</h1>
+                            </div>
+                            <div class="digital"><img src="assets/imagensdash/agua.png " alt=""> <h2> 65%</h2></div>
+                        </div>
+                        <div class="kpi3">
+                            <div class="titulo">
+                                <h1><span style="color: #00C3FF;">Último</span> Alerta Registrado</h1>
+                            </div>
+                            <div class="digital"><img src="assets/imagensdash/relogio.png " alt=""> <h2> 5 Dias</h2></div>
+                        </div>
+                    </div>
+                    <div class="conteudo">
+                        <div class="container">
+                            <div class="tab">
+    
+                                <div class="header_tab">
+                                    <div class="titulo">
+                                        <h3>Temperatura</h3>
+                                    </div>
+    
+                                    <div class="botões">
+                                        <button class="tablinks active primeiro_botao"
+                                            onclick="openTab(event, 'chartTab1')">Tempo Real</button>
+                                        <button class="tablinks" onclick="openTab(event, 'chartTab2')">Última
+                                            Semana</button>
+                                        <button class="tablinks ultimo_botao" onclick="openTab(event, 'chartTab3')">Último
+                                            Mês</button>
+                                    </div>
+                                </div>
+    
+    
+                                <div id="chartTab1" class="tabcontent" style="display: block;">
+                                    <canvas id="Temp_TempoReal"></canvas>
+                                    <div class="legenda-x">
+                                        <span>Tempo (Segundos)</span>
+                                    </div>
+                                </div>
+    
+                                <div id="chartTab2" class="tabcontent">
+                                    <canvas id="Temp_Semana"></canvas>
+                                    <div class="legenda-x">
+                                        <span>Tempo (Semanas)</span>
+                                    </div>
+                                </div>
+    
+                                <div id="chartTab3" class="tabcontent">
+                                    <canvas id="Temp_Mes"></canvas>
+                                    <div class="legenda-x">
+                                        <span>Tempo (Mês)</span>
+                                    </div>
+                                </div>
+    
+                            </div>
+                        </div>
+    
+                        <div class="container">
+    
+                            <div class="tab">
+                                <div class="header_tab">
+                                    <div class="titulo">
+                                        <h3>Umidade</h3>
+                                    </div>
+    
+                                    <div class="botões">
+                                        <button class="tablinks2 active primeiro_botao"
+                                            onclick="openTab2(event, 'chartTab4')">Tempo Real</button>
+                                        <button class="tablinks2" onclick="openTab2(event, 'chartTab5')">Última
+                                            Semana</button>
+                                        <button class="tablinks2 ultimo_botao" onclick="openTab2(event, 'chartTab6')">Último
+                                            Mês</button>
+                                    </div>
+                                </div>
+    
+    
+    
+                                <div id="chartTab4" class="tabcontent2" style="display: block;">
+                                    <canvas id="Umid_TempoReal"></canvas>
+                                    <div class="legenda-x">
+                                        <span>Tempo (Segundos)</span>
+                                    </div>
+                                </div>
+    
+                                <div id="chartTab5" class="tabcontent2">
+                                    <canvas id="Umid_Semana"></canvas>
+                                    <div class="legenda-x">
+                                        <span>Tempo (Semanas)</span>
+                                    </div>
+                                </div>
+    
+                                <div id="chartTab6" class="tabcontent2">
+                                    <canvas id="Umid_Mes"></canvas>
+                                    <div class="legenda-x">
+                                        <span>Tempo (Mês)</span>
+                                    </div>
+                                </div>
+                                
+    
+                            </div>
+                        </div>
+                        <div id="popup" class="popup">
+                            <h2>Notificações</h2>
+                            <p>Aqui estão as suas notificações...</p>
+                        </div>
+                    </div>
+                    <div class="ultimo_grafico">
+                        <div class="titulo">
+                            <h1>Temperatura e Umidade Ao Longo do Ano </h1>
+                        </div>
+                        <canvas id="ultimo_grafico" width="900" height="200"></canvas>
+                      </div>
+                      
+                      
+                        
+                      
+                
+                </div>
+                <div class="segunda_div">
+                    <div class="div_pai_container">
 
                 
-                <div class="chartCard1">
-                    <div class="container_chart">
-                        <h1>Temperatura Em Tempo Real</h1>
-                        <div class="chartBox">
-                            <div class="digital">
-                               <img src="assets/imagens/Design sem nome - 2024-04-18T002013 1(1).png" alt=""><h1>55°C</h1>
-                            </div>
-                          <canvas id="myChart"></canvas>
-                          <div class="titulo_chart">
-                            <h3>Controlado</h3>
-                        </div>
-                        <div class="descricao_chart">
-                            <h5 style="color: green;">Controlado </h5>
-                            <h5 style="color: yellow;"> Instável</h5>
-                            <h5 style="color: red;">Emergência</h5>
-                        </div>
-                        </div>
-                    </div>
-                </div>
+                        <div class="chartCard1">
+                            <div class="container_chart">
+                                <div class="chartBox">
+                                    <div class="titulo">
+                                        <h1>Medidor de Atividades <spans style="color: #00C3FF;">Críticas</spans></h1>
+                                        <h1>Temperatura</h1>
+                                    </div>
+                                        
 
-                <div class="chartCard2">
-                    <div class="container_chart">
-                        <h1>Umidade Em Tempo Real</h1>
-                        <div class="chartBox">
-                            <div class="digital">
-                               <img src="assets/imagens/Design sem nome - 2024-04-18T001947 1.png" alt=""><h1>55%</h1>
+                                  <canvas id="myChart"></canvas>
+                                  <div class="titulo_chart">
+                                    <h3>Controlado</h3>
+                                </div>
+                                <div class="descricao_chart">
+                                    <h5 style="color: #03F44E;">&#x2B24; Controlado </h5>
+                                    <h5 style="color: yellow;">&#x2B24; Instável</h5>
+                                    <h5 style="color: red;">&#x2B24; Emergência</h5>
+                                </div>
+                                <div class="legenda_chart">
+                                    <h5 style="color: #03F44E;">-2°C ~ 0°C </h5> 
+                                    <h5 style="color: yellow;"> 0°C ~ 4°C </h5> 
+                                    <h5 style="color: red;">4°C ~ 8°C</h5>
+                                </div>
+                                </div>
                             </div>
-                          <canvas id="myChart2"></canvas>
-                          <div class="titulo_chart">
-                            <h3>Controlado</h3>
                         </div>
-                        <div class="descricao_chart">
-                            <h5 style="color: green;">Controlado </h5>
-                            <h5 style="color: yellow;"> Instável</h5>
-                            <h5 style="color: red;">Emergência</h5>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        
+                        <div class="chartCard2">
+                            <div class="container_chart">
                     
-                <div class="conteudo">
-                    <div class="container">
-                        <div class="tab">
-
-                            <div class="header_tab">
-                                <div class="titulo">
-                                    <h3>Temperatura</h3>
+                                <div class="chartBox">
+                                    <div class="titulo">
+                                        <h1>Medidor de Atividades <spans style="color: #00C3FF;">Críticas</spans></h1>
+                                        <h1>Umidade</h1>
+                                    </div>
+                                  <canvas id="myChart2"></canvas>
+                                  <div class="titulo_chart">
+                                    <h3>Controlado</h3>
                                 </div>
-
-                                <div class="botões">
-                                    <button class="tablinks active primeiro_botao"
-                                        onclick="openTab(event, 'chartTab1')">Tempo Real</button>
-                                    <button class="tablinks" onclick="openTab(event, 'chartTab2')">Última
-                                        Semana</button>
-                                    <button class="tablinks ultimo_botao" onclick="openTab(event, 'chartTab3')">Último
-                                        Mês</button>
+                                <div class="descricao_chart">
+                                    <h5 style="color: #03F44E;">&#x2B24; Controlado </h5>
+                                    <h5 style="color: yellow;">&#x2B24; Instável</h5>
+                                    <h5 style="color: red;">&#x2B24; Emergência</h5>
                                 </div>
-                            </div>
-
-
-                            <div id="chartTab1" class="tabcontent" style="display: block;">
-                                <canvas id="Temp_TempoReal"></canvas>
-                                <div class="legenda-x">
-                                    <span>Tempo (Segundos)</span>
+                                <div class="legenda_chart2">
+                                    <h5 style="color: #03F44E;">40% ~ 60% </h5> 
+                                    <h5 style="color: yellow;"> 70% ~ 80% </h5> 
+                                    <h5 style="color: red;">80% ~ 100%</h5>
+                                </div>
                                 </div>
                             </div>
-
-                            <div id="chartTab2" class="tabcontent">
-                                <canvas id="Temp_Semana"></canvas>
-                                <div class="legenda-x">
-                                    <span>Tempo (Semanas)</span>
-                                </div>
-                            </div>
-
-                            <div id="chartTab3" class="tabcontent">
-                                <canvas id="Temp_Mes"></canvas>
-                                <div class="legenda-x">
-                                    <span>Tempo (Mês)</span>
-                                </div>
-                            </div>
-
                         </div>
-                    </div>
-
-                    <div class="container">
-
-                        <div class="tab">
-                            <div class="header_tab">
-                                <div class="titulo">
-                                    <h3>Umidade</h3>
-                                </div>
-
-                                <div class="botões">
-                                    <button class="tablinks2 active primeiro_botao"
-                                        onclick="openTab2(event, 'chartTab4')">Tempo Real</button>
-                                    <button class="tablinks2" onclick="openTab2(event, 'chartTab5')">Última
-                                        Semana</button>
-                                    <button class="tablinks2 ultimo_botao" onclick="openTab2(event, 'chartTab6')">Último
-                                        Mês</button>
-                                </div>
-                            </div>
-
-
-
-                            <div id="chartTab4" class="tabcontent2" style="display: block;">
-                                <canvas id="Umid_TempoReal"></canvas>
-                                <div class="legenda-x">
-                                    <span>Tempo (Segundos)</span>
-                                </div>
-                            </div>
-
-                            <div id="chartTab5" class="tabcontent2">
-                                <canvas id="Umid_Semana"></canvas>
-                                <div class="legenda-x">
-                                    <span>Tempo (Semanas)</span>
-                                </div>
-                            </div>
-
-                            <div id="chartTab6" class="tabcontent2">
-                                <canvas id="Umid_Mes"></canvas>
-                                <div class="legenda-x">
-                                    <span>Tempo (Mês)</span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div id="popup" class="popup">
-                        <h2>Notificações</h2>
-                        <p>Aqui estão as suas notificações...</p>
                     </div>
                 </div>
+                
+                    
+                
                 
             </section>
 
@@ -194,6 +248,45 @@
 </html>
 
 <script>
+    const ctx7 = document.getElementById('ultimo_grafico');
+
+                      new Chart(ctx7, {
+                        type: 'line',
+        data: {
+  
+            labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+    "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+            datasets: [{
+                label: 'Umidade',
+                data: [45, 46, 47, 48, 49, 48, 50, 45, 46, 47, 48, 49, 48, 50],
+                borderColor: 'rgb(0, 195, 255)',
+                backgroundcolor: 'rgb(13, 14, 43)',
+                lineTension: 0.3
+            }]
+        },
+        options: {
+        scales: {
+            y: {
+                min: 44, // Define o limite mínimo do eixo y
+                max: 50, // Define o limite máximo do eixo y
+                ticks: {
+                    callback: function(value, index, values) {
+                        return value + '%'; // Adiciona o símbolo de porcentagem
+                    },
+            padding: 15 
+        },
+                grid: {
+                    color: 'rgb(65, 65, 65)', // Cor das linhas de grade do eixo y
+                }
+            },
+            x: {
+                grid: {
+                    color: 'rgb(65, 65,65)', // Cor das linhas de grade do eixo x
+                }
+            }
+        }
+    }
+  });
     // setup 
 const data = {
   labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
@@ -203,9 +296,9 @@ const data = {
     backgroundColor: [
         'rgba(255, 0, 0)', //vermelho
         'rgba(255, 255, 0)', //amarelo
-        'rgba(0, 128, 0)', //verde
-        'rgba(0, 128, 0)', //verde
-        'rgba(0, 128, 0)', //verde
+        '#03F44E', //verde
+        '#03F44E', //verde
+        '#03F44E', //verde
         'rgba(255, 255, 0)', //amarelo
         'rgba(255, 0, 0)', //vermelho
 
@@ -251,7 +344,7 @@ const gaugeNeedle = {
         ctx.beginPath();
 
         ctx.strokeStyle = 'black';
-        ctx.fillStyle = '#00C3FF'
+        ctx.fillStyle = 'grey'
         ctx.lineWidth = 1;
         
 

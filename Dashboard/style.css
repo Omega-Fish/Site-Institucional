@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    overflow: hidden;
 }
 
 .headers {
@@ -138,16 +139,79 @@ body {
 }
 .div_pai {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     height: 100%;
     transition: background-color ease 0.8s;
 }
 
+
+.primeira_div {
+    display: flex;
+    margin-left: 20px;
+    margin-right: 5px;
+    flex-direction: column;
+    width:75%;
+}
+.KPIS {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+    height: 28%;
+}
+.kpi1, .kpi2, .kpi3 {
+    text-align: center;
+    background: linear-gradient(to bottom, #111111, #111111);
+    width: 28%;
+    border: 3px #00C3FF solid;
+    color: white;
+    border-radius: 10px;
+    height: 122px;
+}
+.KPIS .titulo {
+    padding-top: 7px;
+    border-bottom: #00C3FF solid 3px;
+    background-color: #111111;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 30px;
+}
+.digital {
+    display: flex;
+    padding-left: 70px;
+    flex-direction: row;
+}
+.digital h2 {
+    margin-top: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+}
+.digital img {
+    width: 40px;
+    height: 40px;
+    margin-top: 15px;
+}
+.kpi3 .digital {
+padding-left: 45px;
+}
+.kpi3 .digital h2 {
+    margin-left: 10px;
+}
+.KPIS h1 {
+font-family: 'Inter', sans-serif;
+font-size: 18px;
+}
+.segunda_div {
+    flex-direction: column;
+    width: 25%;
+}
 .conteudo {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: 18%;
 }
 
 .light {
@@ -189,8 +253,7 @@ Conteudo / Gráficos
 .conteudo .tab {
     overflow: hidden;
     width: 500px;
-    height: 330px;
-    
+    height: 280px;
 }
 
 /* botão da aba */
@@ -200,8 +263,8 @@ Conteudo / Gráficos
     float: left;
     border: solid 1px #00C3FF;
     outline: none;
-    font-size: 13px;
-    padding: 5px 10px;
+    font-size: 11px;
+    padding: 5px 7px;
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
@@ -253,6 +316,7 @@ Conteudo / Gráficos
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: #fff;
     font-size: 20px;
+    width: 48%;
     margin: 0px 10px;
     display: flex;
     align-items: center;
@@ -281,14 +345,14 @@ Conteudo / Gráficos
 
 .conteudo .titulo {
     width: 50%;
+    font-size: 20px;
     margin-top: 25px;
     text-align: center;
 }
 
 .conteudo .botões {
     margin-top: 30px;
-    width: 90%;
-    margin-right: 10px;
+    width: 70%;
 }
 
 /* 
@@ -298,19 +362,19 @@ Gráfico Gauge
 */
 .div_pai_container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-bottom: 10px;
 }
 
     .chartCard1 {
-    width: 50%;
+    width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   .chartCard2 {
-    width: 50%;
+    width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -332,53 +396,74 @@ Gráfico Gauge
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    width: 200px;
-    margin: 0px 20px;
+    width: 220px;
+    height: 270px;
+    margin: 20px 0px;
     padding: 20px;
     border-radius: 20px;
     border: solid 3px rgb(255, 255, 255);
     background: linear-gradient(to bottom, #000000, rgb(0, 1, 39));
   }
 
-  .digital {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    color: white;
+.titulo h1{
+    margin-top: 0px;
     text-align: center;
-    border: solid 3px white;
-    padding: 0px 10px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-  }
-  .digital h1{
-    font-weight: 600;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 25px;
-  }
-  .digital img{
-    width: 23%;
-    height: 23%;
-    margin-top: -5px;
-    margin-right: 8px;
-  }
-
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
   .titulo_chart {
     height: 50px;
-    color: rgb(0, 192, 0);
+    color: #03F44E;
     margin-top: -50px;
   }
 
   .descricao_chart {
     display: flex;
     flex-direction: row;
+    width: 270px;
     font-weight: 800;
     font-size: 15px;
     height: 30px;
-    color: rgb(0, 192, 0);
+    color: #03F44E;
   }
   .descricao_chart h5{
     margin: 15px 10px;
+  }
+  .legenda_chart, .legenda_chart2 {
+    display: flex;
+    flex-direction: row;
+    font-weight: 800;
+    width: 260px;
+    font-size: 15px;
+    height: 30px;
+    color: #03F44E;
+  } 
+  .legenda_chart h5 {
+    margin: 15px 15px;
+  }
+  .legenda_chart2 h5 {
+    margin: 15px 10px;
+  }
+  .legenda_chart h1{
+    font-size: 10px ;
+  }
+
+  .ultimo_grafico {
+    border: solid 3px white;
+    padding-left: 30px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(1, 1, 1, 1) 0%, rgba(0, 3, 35, 1) 100%);
+    margin-top: 90px;
+  }
+  .ultimo_grafico .titulo {
+    margin-top: 5px;
+    margin-bottom: -10px;
+  }
+
+  .ultimo_grafico h1 {
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
   }
