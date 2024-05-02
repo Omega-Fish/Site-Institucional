@@ -21,13 +21,13 @@ function cadastrar() {
     }
 
     /* Validação da senha */
-    if(senha.length < 6 || senha.indexOf('&') == -1) {
-        ipt_senha.style.borderBottom = '1px solid #FF0000';
-        erro_senha.style.display = 'block'
-    } else {
+    if(senha.length > 5 && (senha.indexOf('@') > -1 || senha.indexOf('#') > -1 || senha.indexOf('$') > -1 || senha.indexOf('%') > -1)) {
         ipt_senha.style.borderBottom = '1px solid #FFFFFF';
         erro_senha.style.display = 'none'
         aceito++
+    } else {
+        ipt_senha.style.borderBottom = '1px solid #FF0000';
+        erro_senha.style.display = 'block'
     }
 
     /* Validação da confirmação da senha */
