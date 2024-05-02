@@ -58,6 +58,7 @@ body {
     font-size: 17px;
     margin-left: 10px;
     margin-top: -2px;
+    font-family: 'Inter', sans-serif;
 }
 
 .sidebar.retrair li {
@@ -109,6 +110,7 @@ body {
 
 .header h3 {
     margin-left: 20px;
+    font-family: 'Inter', sans-serif;
 }
 
 .header-end li {
@@ -431,6 +433,8 @@ Gráfico Gauge
     height: 50px;
     color: #03F44E;
     margin-top: -50px;
+    font-family: 'Inter', sans-serif;
+   
   }
 
   .descricao_chart {
@@ -444,6 +448,8 @@ Gráfico Gauge
   }
   .descricao_chart h5{
     margin: 15px 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
   }
   .legenda_chart, .legenda_chart2 {
     display: flex;
@@ -453,6 +459,8 @@ Gráfico Gauge
     font-size: 15px;
     height: 30px;
     color: #03F44E;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
   } 
   .legenda_chart h5 {
     margin: 15px 15px;

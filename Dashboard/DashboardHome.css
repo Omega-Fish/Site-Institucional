@@ -61,6 +61,7 @@ body {
     font-size: 17px;
     margin-left: 10px;
     margin-top: -2px;
+    font-family: 'Inter', sans-serif;
 }
 
 .sidebar.retrair li {
@@ -113,6 +114,7 @@ body {
 
 .header h3 {
     margin-left: 20px;
+    font-family: 'Inter', sans-serif;
 }
 
 .header-end li {
