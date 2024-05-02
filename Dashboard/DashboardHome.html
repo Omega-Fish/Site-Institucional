@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="DashboardHome.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="Funcionalidades.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
 </head>
 
-<body>
+<body onclick="fecharPopup(); fecharAtualizacoes()">
 
     <!-- Sidebar -->
     <div class="headers">
@@ -24,7 +24,7 @@
 
             <li class="bx bx-notepad"> <span class="texto">Comunicados</span> </li>
             <li class="bx bx-cog"> <span class="texto">Configurações</span> </li>
-            <li class="bx bx-refresh"> <span class="texto">Atualizações</span> </li>
+            <li class="bx bx-refresh" onclick="exibirAtualizacoes(); event.stopPropagation();" > <span class="texto">Atualizações</span> </li>
 
             <div class="sidebar-end">
                 <li class="bx bx-user-circle"> <span class="texto">Logout</span></li>
@@ -37,7 +37,7 @@
                 <h3>Dashboard</h3>
                 <div class="header-end">
                     <li class='bx bx-search-alt-2'></li>
-                    <li class='bx bx-bell' onclick="exibirPopup() "></li>
+                    <li id="sino" class='bx bx-bell' onclick="exibirPopup(); event.stopPropagation(); "></li>
 
                     <li onclick="AtivarDesativarFS()" class='bx bx-fullscreen'></li>
                     <h3>Josh Burton</h3>
@@ -51,84 +51,90 @@
                             <div class="titulo">
                                 <h1> Quantidade Total de <span style="color: #00C3FF;"><br> Câmaras</span></h1>
                             </div>
-                            <div class="digital"><h2> 12 Câmaras</h2></div>
-                        
+                            <div class="digital">
+                                <h2> 12 Câmaras</h2>
+                            </div>
+
                         </div>
                         <div class="kpi2">
                             <div class="titulo">
                                 <h1> Quantidade de Câmaras <span style="color: yellow;"><br> Instáveis</span></h1>
                             </div>
-                            <div class="digital"><h2> 3 Câmaras</h2></div>
+                            <div class="digital">
+                                <h2> 3 Câmaras</h2>
+                            </div>
                         </div>
                         <div class="kpi3">
                             <div class="titulo">
                                 <h1> Quantidade de Câmaras em <span style="color: red;"><br> Emergência</span></h1>
                             </div>
-                            <div class="digital"><h2> 2 Câmaras</h2></div>
+                            <div class="digital">
+                                <h2> 2 Câmaras</h2>
+                            </div>
                         </div>
                     </div>
-                
+
                     <div class="setor">
                         <div class="titulo">
                             <h1>Câmaras</h1>
                         </div>
                         <div class="divisao1">
                             <div class="camara">
-                            <span>Câmara 1</span>
-                            <a href="Dashboard.html"><img src="assets/imagensdash/container.png" alt=""></a>
+                                <span>Câmara 1</span>
+                                <a href="Dashboard.html"><img src="assets/imagensdash/container.png" alt=""></a>
                             </div>
                             <div class="camara">
                                 <span>Câmara 3</span>
                                 <a href="Dashboard.html"><img src="assets/imagensdash/container (1).png" alt=""></a>
-                                </div>
-                                <div class="camara">
-                                    <span>Câmara 5</span>
-                                    <a href="Dashboard.html"><img src="assets/imagensdash/container (1).png" alt=""></a>
-                                    </div>
-                                    <div class="camara">
-                                        <span>Câmara 7</span>
-                                        <a href="Dashboard.html"><img src="assets/imagensdash/container.png" alt=""></a>
-                                        </div>
-                                        <div class="camara">
-                                            <span>Câmara 9</span>
-                                            <a href="Dashboard.html"><img src="assets/imagensdash/container.png" alt=""></a>
-                                            </div>
-                                            <div class="camara">
-                                                <span>Câmara 11</span>
-                                                <a href="Dashboard.html"><img src="assets/imagensdash/container (1).png" alt=""></a>
-                                                </div>
-                                                
-                                                    
+                            </div>
+                            <div class="camara">
+                                <span>Câmara 5</span>
+                                <a href="Dashboard.html"><img src="assets/imagensdash/container (1).png" alt=""></a>
+                            </div>
+                            <div class="camara">
+                                <span>Câmara 7</span>
+                                <a href="Dashboard.html"><img src="assets/imagensdash/container.png" alt=""></a>
+                            </div>
+                            <div class="camara">
+                                <span>Câmara 9</span>
+                                <a href="Dashboard.html"><img src="assets/imagensdash/container.png" alt=""></a>
+                            </div>
+                            <div class="camara">
+                                <span>Câmara 11</span>
+                                <a href="Dashboard.html"><img src="assets/imagensdash/container (1).png" alt=""></a>
+                            </div>
+
+
                         </div>
                         <div class="divisao2">
                             <div class="camara">
                                 <span>Câmara 2</span>
                                 <a href="Dashboard.html"><img src="assets/imagensdash/container (2).png" alt=""></a>
-                                </div>
-                                <div class="camara">
-                                    <span>Câmara 4</span>
-                                    <a href="Dashboard.html"><img src="assets/imagensdash/container.png" alt=""></a>
-                                    </div>
-                                    <div class="camara">
-                                        <span>Câmara 6</span>
-                                        <a href="Dashboard.html"><img src="assets/imagensdash/container.png" alt=""></a>
-                                        </div>
-                                        <div class="camara">
-                                            <span>Câmara 8</span>
-                                            <a href="Dashboard.html"><img src="assets/imagensdash/container.png" alt=""></a>
-                                            </div>
-                                            <div class="camara">
-                                                <span>Câmara 10</span>
-                                                <a href="Dashboard.html"><img src="assets/imagensdash/container (2).png" alt=""></a>
-                                                </div>
-                                                <div class="camara">
-                                                    <span>Câmara 12</span>
-                                                    <a href="Dashboard.html"><img src="assets/imagensdash/container.png" alt=""></a>
-                                                    </div>
-                                                
-                            
+                            </div>
+                            <div class="camara">
+                                <span>Câmara 4</span>
+                                <a href="Dashboard.html"><img src="assets/imagensdash/container.png" alt=""></a>
+                            </div>
+                            <div class="camara">
+                                <span>Câmara 6</span>
+                                <a href="Dashboard.html"><img src="assets/imagensdash/container.png" alt=""></a>
+                            </div>
+                            <div class="camara">
+                                <span>Câmara 8</span>
+                                <a href="Dashboard.html"><img src="assets/imagensdash/container.png" alt=""></a>
+                            </div>
+                            <div class="camara">
+                                <span>Câmara 10</span>
+                                <a href="Dashboard.html"><img src="assets/imagensdash/container (2).png" alt=""></a>
+                            </div>
+                            <div class="camara">
+                                <span>Câmara 12</span>
+                                <a href="Dashboard.html"><img src="assets/imagensdash/container.png" alt=""></a>
+                            </div>
+
+
                         </div>
-                        
+
                     </div>
                     <div class="legenda">
                         <div class="descricao_chart">
@@ -137,8 +143,8 @@
                             <h5 style="color: red;">&#x2B24; Emergência</h5>
                         </div>
                         <div class="legenda_chart">
-                            <h5 style="color: #03F44E;">Temperatura: -2°C ~ 0°C <br> & <br> Umidade: 40% ~ 60% </h5> 
-                            <h5 style="color: yellow;">Temperatura: 0°C ~ 4°C <br> Ou <br>Umidade: 70% ~ 80% </h5> 
+                            <h5 style="color: #03F44E;">Temperatura: -2°C ~ 0°C <br> & <br> Umidade: 40% ~ 60% </h5>
+                            <h5 style="color: yellow;">Temperatura: 0°C ~ 4°C <br> Ou <br>Umidade: 70% ~ 80% </h5>
                             <h5 style="color: red;">Temperatura: 4°C ~ 8°C <br> Ou <br>Umidade: 80% ~ 100% </h5>
                         </div>
                     </div>
@@ -146,5 +152,14 @@
 
         </div>
 
-
+        
     </div>
+    <div id="popup" class="popup">
+        <h2>Notificações</h2>
+        <p>Suas notificações aparecerão aqui...</p>
+    </div>
+    <div id="atualizacoes" class="atualizacoes">
+        <h2>Atualizações</h2>
+        <p>Ainda não tivemos nenhuma atualização...</p>
+    </div>
+</body>

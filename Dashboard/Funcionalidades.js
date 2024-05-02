@@ -76,13 +76,38 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   })
 })
+var verificacao = false;
 
-// function exibirPopup() {
-//   popup.style.display = 'block';
-// }
+function exibirPopup() {
+  popup.style.display = 'block';
+  verificacao = true; 
+  atualizacoes.style.display = 'none';
+}
 
-// // Adicione um evento de clique ao ícone de sino para chamar a função exibirPopup
-// document.querySelector('.bx-bell').addEventListener('click', exibirPopup);
+function fecharPopup() {
+  if (verificacao) {
+    popup.style.display = 'none';
+    verificacao = false; 
+  }
+}
+var verificacao_atualizacao = false;
+function exibirAtualizacoes() {
+  atualizacoes.style.display = 'block';
+  verificacao_atualizacao = true; 
+  popup.style.display = 'none';
+}
+
+function fecharAtualizacoes() {
+  if (verificacao_atualizacao) {
+    atualizacoes.style.display = 'none';
+    verificacao_atualizacao = false; 
+  }
+}
+
+
+
+// Adicione um evento de clique ao ícone de sino para chamar a função exibirPopup
+
 
 
 

@@ -102,6 +102,7 @@ body {
     cursor: pointer;
 }
 
+
 .header .settings {
     margin-right: -30px;
 }
@@ -224,19 +225,35 @@ font-size: 18px;
     border: solid 3px #00C3FF;
     padding: 20px;
     border-radius: 9px;
-    width: 60%;
-    height: 60%;
+    width: 800px;
+    height: 400px;
+    z-index: 999;
     background-color: rgb(255, 255, 255);
     animation: fadeInPopup 0.3s ease forwards;
+    margin-top: -690px;
+    margin-left: 280px;
 }
-
+.atualizacoes {
+    display: none;
+    opacity: 0;
+    border: solid 3px #00C3FF;
+    padding: 20px;
+    border-radius: 9px;
+    width: 800px;
+    height: 400px;
+    z-index: 999;
+    background-color: rgb(255, 255, 255);
+    animation: fadeInPopup 0.3s ease forwards;
+    margin-top: -690px;
+    margin-left: 280px;
+}
 @keyframes fadeInPopup {
     from {
         opacity: 0;
         
     }
     to {
-        opacity: 0.7;
+        opacity: 0.95;
     }
 }
 
