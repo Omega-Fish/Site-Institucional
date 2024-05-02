@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
             labels: ['0', '2', '4', '6', '8'],
             datasets: [{
                 label: 'Temperatura',
-                data: [-18.5, -18.2, -17.8, -17.3, -17.0],
+                data: [0.3, 0.6, 1, 0.8, 0.3],
                 borderColor: 'rgb(0, 195, 255)',
                 backgroundcolor: 'rgb(13, 14, 43)',
                 color: 'rgb(255, 255, 255)',
@@ -91,8 +91,8 @@ document.addEventListener('DOMContentLoaded', function () {
         options: {
         scales: {
             y: {
-                min: -20, // Define o limite mínimo do eixo y
-                max: -15, // Define o limite máximo do eixo y
+                min: 0, // Define o limite mínimo do eixo y
+                max: 2, // Define o limite máximo do eixo y
                 ticks: {
                     callback: function(value, index, values) {
                         return value + '°C'; // Adiciona o símbolo de grau Celsius
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
             labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4', 'Semana 5', 'Semana 6', 'Semana 7'],
             datasets: [{
                 label: 'Temperatura',
-                data: [-18.5, -18.2, -17.8, -17.3, -17.0, -17.8, -18.2],
+                data: [0.3, 0.6, 1, 0.8, 1.3, 1.1, 0.8],
                 borderColor: 'rgb(0, 195, 255)',
                 backgroundcolor: 'rgb(13, 14, 43)',
                 lineTension: 0.3
@@ -132,8 +132,8 @@ document.addEventListener('DOMContentLoaded', function () {
         options: {
         scales: {
             y: {
-                min: -20, // Define o limite mínimo do eixo y
-                max: -15, // Define o limite máximo do eixo y
+                min: 0, // Define o limite mínimo do eixo y
+                max: 2, // Define o limite máximo do eixo y
                 ticks: {
                     callback: function(value, index, values) {
                         return value + '°C'; // Adiciona o símbolo de grau Celsius
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
             labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'],
             datasets: [{
                 label: 'Temperatura',
-                data: [-18.7, -18.5, -17.9, -18.3, -18.4, -18.2, -17.9],
+                data: [0.5, 0.6, 1, 0.8, 0.6, 0.2, 0],
                 borderColor: 'rgb(0, 195, 255)',
                 backgroundcolor: 'rgb(13, 14, 43)',
                 lineTension: 0.3
@@ -173,8 +173,8 @@ document.addEventListener('DOMContentLoaded', function () {
         options: {
         scales: {
             y: {
-                min: -20, // Define o limite mínimo do eixo y
-                max: -15, // Define o limite máximo do eixo y
+                min: 0, // Define o limite mínimo do eixo y
+                max: 2, // Define o limite máximo do eixo y
                 ticks: {
                     callback: function(value, index, values) {
                         return value + '°C'; // Adiciona o símbolo de grau Celsius
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function () {
             labels: ['0', '2', '4', '6', '8'],
             datasets: [{
                 label: 'Umidade',
-                data: [45, 46, 47, 48, 49],
+                data: [52, 53, 52, 52, 53, 53, 53],
                 borderColor: 'rgb(0, 195, 255)',
                 backgroundcolor: 'rgb(13, 14, 43)',
                 lineTension: 0.3
@@ -213,8 +213,8 @@ document.addEventListener('DOMContentLoaded', function () {
         options: {
         scales: {
             y: {
-                min: 44, // Define o limite mínimo do eixo y
-                max: 50, // Define o limite máximo do eixo y
+                min: 52, // Define o limite mínimo do eixo y
+                max: 53, // Define o limite máximo do eixo y
                 ticks: {
                     callback: function(value, index, values) {
                         return value + '%'; // Adiciona o símbolo de porcentagem
@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function () {
             labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4', 'Semana 5', 'Semana 6', 'Semana 7'],
             datasets: [{
                 label: 'Umidade',
-                data: [45, 46, 47, 48, 49, 48, 50],
+                data: [53, 52, 53, 52, 52, 52, 53],
                 borderColor: 'rgb(0, 195, 255)',
                 backgroundcolor: 'rgb(13, 14, 43)',
                 lineTension: 0.3
@@ -254,8 +254,8 @@ document.addEventListener('DOMContentLoaded', function () {
         options: {
         scales: {
             y: {
-                min: 44, // Define o limite mínimo do eixo y
-                max: 50, // Define o limite máximo do eixo y
+                min: 52, // Define o limite mínimo do eixo y
+                max: 53, // Define o limite máximo do eixo y
                 ticks: {
                     callback: function(value, index, values) {
                         return value + '%'; // Adiciona o símbolo de porcentagem
@@ -287,7 +287,7 @@ document.addEventListener('DOMContentLoaded', function () {
             labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'],
             datasets: [{
                 label: 'Umidade',
-                data: [87, 85.5, 87, 86, 90, 89, 88],
+                data: [52, 52, 53, 52, 53, 52, 53],
                 borderColor: 'rgb(0, 195, 255)',
                 backgroundcolor: 'rgb(13, 14, 43)',
                 lineTension: 0.3
@@ -296,8 +296,8 @@ document.addEventListener('DOMContentLoaded', function () {
         options: {
         scales: {
             y: {
-                min: 80, // Define o limite mínimo do eixo y
-                max: 90, // Define o limite máximo do eixo y
+                min: 52, // Define o limite mínimo do eixo y
+                max: 53, // Define o limite máximo do eixo y
                 ticks: {
                     callback: function(value, index, values) {
                         return value + '%'; // Adiciona o símbolo de porcentagem
@@ -317,6 +317,4 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
   }
-  
-
   

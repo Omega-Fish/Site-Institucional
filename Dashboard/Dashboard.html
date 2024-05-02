@@ -258,173 +258,199 @@
 <script>
     const ctx7 = document.getElementById('ultimo_grafico');
 
-                      new Chart(ctx7, {
-                        type: 'line',
+    new Chart(ctx7, {
+        type: 'line',
         data: {
-  
+
             labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
-    "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+                "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+
             datasets: [{
                 label: 'Umidade',
-                data: [45, 46, 47, 48, 49, 48, 50, 45, 46, 47, 48, 49, 48, 50],
+                data: [52, 53, 53, 53, 52, 52, 53, 52, 53, 52, 53, 53],
                 borderColor: 'rgb(0, 195, 255)',
                 backgroundcolor: 'rgb(13, 14, 43)',
-                lineTension: 0.3
-            }]
+                lineTension: 0.3,
+                yAxisID: 'y',
+                
+            },
+            {
+                label: 'Temperatura',
+                data: [0, 1, 0.7, 1.5, 1, 1, 1.5, 1, 0.5, 0, 0.5, 0.8],
+                borderColor: 'rgb(255, 151, 46)',
+                backgroundcolor: 'rgb(13, 14, 43)',
+                lineTension: 0.3,
+                yAxisID: 'y1',
+            }
+
+            ]
         },
         options: {
-        scales: {
-            y: {
-                min: 44, // Define o limite mínimo do eixo y
-                max: 50, // Define o limite máximo do eixo y
-                ticks: {
-                    callback: function(value, index, values) {
-                        return value + '%'; // Adiciona o símbolo de porcentagem
+            
+            scales: {
+                y: {
+                    ticks: {
+                        callback: function (value, index, values) {
+                            return value + '%'; // Adiciona o símbolo de porcentagem
+                        },
+                        padding: 15
                     },
-            padding: 15 
-        },
-                grid: {
-                    color: 'rgb(65, 65, 65)', // Cor das linhas de grade do eixo y
+                    position: 'left',
+                    grid: {
+                        color: 'rgb(65, 65, 65)', // Cor das linhas de grade do eixo y
+                    },
+                    yAxisID: 'y',
+                },
+
+                y1: {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    grid: {
+                        color: 'rgb(65, 65, 65)', // Cor das linhas de grade do eixo y
+                    },
+                    yAxisID: 'y1',
                 }
-            },
-            x: {
-                grid: {
-                    color: 'rgb(65, 65,65)', // Cor das linhas de grade do eixo x
+                ,
+
+                x: {
+                    grid: {
+                        color: 'rgb(65, 65,65)', // Cor das linhas de grade do eixo x
+                    }
                 }
             }
         }
-    }
-  });
+    });
     // setup 
-const data = {
-  labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-  datasets: [{
-    label: 'Weekly Sales',
-    data: [15, 15, 15, 15, 15, 15, 15],
-    backgroundColor: [
-        'rgba(255, 0, 0)', //vermelho
-        'rgba(255, 255, 0)', //amarelo
-        '#03F44E', //verde
-        '#03F44E', //verde
-        '#03F44E', //verde
-        'rgba(255, 255, 0)', //amarelo
-        'rgba(255, 0, 0)', //vermelho
+    const data = {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        datasets: [{
+            label: 'Weekly Sales',
+            data: [15, 15, 15, 15, 15, 15, 15],
+            backgroundColor: [
+                'rgba(255, 0, 0)', //vermelho
+                'rgba(255, 255, 0)', //amarelo
+                '#03F44E', //verde
+                '#03F44E', //verde
+                '#03F44E', //verde
+                'rgba(255, 255, 0)', //amarelo
+                'rgba(255, 0, 0)', //vermelho
 
 
-    ],
-    borderColor: [
-    'rgba(0, 0, 0)', //vermelho
-        'rgba(0, 0, 0)', //amarelo
-        'rgba(0, 0, 0)', //verde
-        'rgba(0, 0, 0)', //amarelo
-        'rgba(0, 0, 0)', //vermelho
-    ],
-    borderWidth: 1, 
-    circumference: 180,
-    rotation: 270,
-    cutout: '80%',
-    needleValue: 48.5
-  }]
-};
-const gaugeNeedle = {
-    id:'gaugeNeedle',
-    afterDatasetsDraw(chart, args, plugins) {
-        const {ctx, data} = chart;
+            ],
+            borderColor: [
+                'rgba(0, 0, 0)', //vermelho
+                'rgba(0, 0, 0)', //amarelo
+                'rgba(0, 0, 0)', //verde
+                'rgba(0, 0, 0)', //amarelo
+                'rgba(0, 0, 0)', //vermelho
+            ],
+            borderWidth: 1,
+            circumference: 180,
+            rotation: 270,
+            cutout: '80%',
+            needleValue: 48.5
+        }]
+    };
+    const gaugeNeedle = {
+        id: 'gaugeNeedle',
+        afterDatasetsDraw(chart, args, plugins) {
+            const { ctx, data } = chart;
 
-        ctx.save();
-        const xCenter = chart.getDatasetMeta(0).data[0].x;
-        const yCenter = chart.getDatasetMeta(0).data[0].y;
-        const outerRadius = chart.getDatasetMeta(0).data[0].outerRadius;
-        const innerRadius = chart.getDatasetMeta(0).data[0].innerRadius;
-        const widthSlice = (outerRadius - innerRadius) / 2;
-        const radius = outerRadius / 10; // Ajuste o tamanho do ponteiro aqui (por exemplo, 1/10 do raio externo)
-        const angle = Math.PI / 180
-        
-        const needleValue = data.datasets[0].needleValue;
-        
-        const dataTotal = data.datasets[0].data.reduce((a, b) => a + b, 0);
-        
-        const circumference = ((chart.getDatasetMeta(0).data[0].circumference / Math.PI) / data.datasets[0].data[0]) * needleValue;
+            ctx.save();
+            const xCenter = chart.getDatasetMeta(0).data[0].x;
+            const yCenter = chart.getDatasetMeta(0).data[0].y;
+            const outerRadius = chart.getDatasetMeta(0).data[0].outerRadius;
+            const innerRadius = chart.getDatasetMeta(0).data[0].innerRadius;
+            const widthSlice = (outerRadius - innerRadius) / 2;
+            const radius = outerRadius / 10; // Ajuste o tamanho do ponteiro aqui (por exemplo, 1/10 do raio externo)
+            const angle = Math.PI / 180
 
-        ctx.translate(xCenter, yCenter);
-        ctx.rotate(Math.PI * (circumference + 1.5));
+            const needleValue = data.datasets[0].needleValue;
 
-        ctx.beginPath();
+            const dataTotal = data.datasets[0].data.reduce((a, b) => a + b, 0);
 
-        ctx.strokeStyle = 'black';
-        ctx.fillStyle = 'grey'
-        ctx.lineWidth = 1;
-        
+            const circumference = ((chart.getDatasetMeta(0).data[0].circumference / Math.PI) / data.datasets[0].data[0]) * needleValue;
 
-        ctx.moveTo(0 - radius, 0);
-        ctx.lineTo(0, 0 - innerRadius - widthSlice);
-        ctx.lineTo(0 + radius, 0);
+            ctx.translate(xCenter, yCenter);
+            ctx.rotate(Math.PI * (circumference + 1.5));
 
-        ctx.closePath();
-        ctx.stroke();
-        ctx.fill();
+            ctx.beginPath();
 
-        //círculo no meio
+            ctx.strokeStyle = 'black';
+            ctx.fillStyle = 'grey'
+            ctx.lineWidth = 1;
 
-        ctx.beginPath();
-        ctx.arc(0, 0, radius, 0, angle * 360, false);
-        ctx.fill();
-        ctx.restore();
-    }
-}
-// gaugeFlowMeter plugin block
-const gaugeFlowMeter = {
-    id: 'gaugeFlowMeter',
-    afterDatasetsDraw(chart, args, plugins) {
-        const {ctx, data} = chart;
 
-        ctx.save();
-        const needleValue = data.datasets[0].needleValue;
-        const xCenter = chart.getDatasetMeta(0).data[0].x;
-        const yCenter = chart.getDatasetMeta(0).data[0].y;
-        
-        const circumference = ((chart.getDatasetMeta(0).data[0].circumference / Math.PI) / data.datasets[0].data[0]) * needleValue;
-        const percentageValue = circumference * 100;
+            ctx.moveTo(0 - radius, 0);
+            ctx.lineTo(0, 0 - innerRadius - widthSlice);
+            ctx.lineTo(0 + radius, 0);
 
-        // flowMeter
-        ctx.font = 'bold 30px sans-serif';
-        ctx.fillStyle = 'grey';
-        ctx.textAlign = 'center';
-        ctx.fillText(`${percentageValue.toFixed(1)}%`, xCenter, yCenter + 45);
+            ctx.closePath();
+            ctx.stroke();
+            ctx.fill();
 
-    }
-}
-// config 
-const config = {
-  type: 'doughnut',
-  data,
-  options: {
-    layout: {
-        padding: {
-            bottom: 50
+            //círculo no meio
+
+            ctx.beginPath();
+            ctx.arc(0, 0, radius, 0, angle * 360, false);
+            ctx.fill();
+            ctx.restore();
         }
-    },
-    aspectRatio: 1.7,
-    plugins: {
-        legend: {
-            display: false
+    }
+    // gaugeFlowMeter plugin block
+    const gaugeFlowMeter = {
+        id: 'gaugeFlowMeter',
+        afterDatasetsDraw(chart, args, plugins) {
+            const { ctx, data } = chart;
+
+            ctx.save();
+            const needleValue = data.datasets[0].needleValue;
+            const xCenter = chart.getDatasetMeta(0).data[0].x;
+            const yCenter = chart.getDatasetMeta(0).data[0].y;
+
+            const circumference = ((chart.getDatasetMeta(0).data[0].circumference / Math.PI) / data.datasets[0].data[0]) * needleValue;
+            const percentageValue = circumference * 100;
+
+            // flowMeter
+            ctx.font = 'bold 30px sans-serif';
+            ctx.fillStyle = 'grey';
+            ctx.textAlign = 'center';
+            ctx.fillText(`${percentageValue.toFixed(1)}%`, xCenter, yCenter + 45);
+
+        }
+    }
+    // config 
+    const config = {
+        type: 'doughnut',
+        data,
+        options: {
+            layout: {
+                padding: {
+                    bottom: 50
+                }
+            },
+            aspectRatio: 1.7,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    enabled: false
+                }
+            }
         },
-        tooltip: {
-            enabled: false
-        }
-    }
-  },
-  plugins: [gaugeNeedle]
-};
+        plugins: [gaugeNeedle]
+    };
 
-// render init block
-const myChart = new Chart(
-  document.getElementById('myChart'),
-  config
-);
-const myChart2 = new Chart(
-  document.getElementById('myChart2'),
-  config
-);
+    // render init block
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+    const myChart2 = new Chart(
+        document.getElementById('myChart2'),
+        config
+    );
 
 </script>
