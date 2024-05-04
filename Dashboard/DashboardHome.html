@@ -82,27 +82,27 @@
 
                         <div class="scroll">
                             <div class="divisao1">
-                                <div class="camara">
+                                <div class="camara" id="camara1">
                                     <span>Câmara 1</span>
-                                    <a href="Dashboard.html"><img src="assets/imagensdash/container.png" alt=""></a>
+                                    <a href="Câmaras/Câmara 1.html"><img src="assets/imagensdash/container.png" alt=""></a>
                                 </div>
-                                <div class="camara">
+                                <div class="camara" id="camara3">
                                     <span>Câmara 3</span>
-                                    <a href="Dashboard.html"><img src="assets/imagensdash/container (1).png" alt=""></a>
+                                    <a href="Câmaras/Câmara 3.html"><img src="assets/imagensdash/container (1).png" alt=""></a>
                                 </div>
-                                <div class="camara">
+                                <div class="camara" id="camara5">
                                     <span>Câmara 5</span>
-                                    <a href="Dashboard.html"><img src="assets/imagensdash/container (1).png" alt=""></a>
+                                    <a href="Câmaras/Câmara 5.html"><img src="assets/imagensdash/container (1).png" alt=""></a>
                                 </div>
-                                <div class="camara">
+                                <div class="camara" id="camara7">
                                     <span>Câmara 7</span>
                                     <a href="Dashboard.html"><img src="assets/imagensdash/container.png" alt=""></a>
                                 </div>
-                                <div class="camara">
+                                <div class="camara" id="camara9">
                                     <span>Câmara 9</span>
                                     <a href="Dashboard.html"><img src="assets/imagensdash/container.png" alt=""></a>
                                 </div>
-                                <div class="camara">
+                                <div class="camara" id="camara11">
                                     <span>Câmara 11</span>
                                     <a href="Dashboard.html"><img src="assets/imagensdash/container (1).png" alt=""></a>
                                 </div>
@@ -130,15 +130,15 @@
 
                             </div>
                             <div class="divisao2">
-                                <div class="camara">
+                                <div class="camara" id="camara2">
                                     <span>Câmara 2</span>
-                                    <a href="Dashboard.html"><img src="assets/imagensdash/container (2).png" alt=""></a>
+                                    <a href="Câmaras/Câmara 2.html"><img src="assets/imagensdash/container (2).png" alt=""></a>
                                 </div>
-                                <div class="camara">
+                                <div class="camara" id="camara4">
                                     <span>Câmara 4</span>
-                                    <a href="Dashboard.html"><img src="assets/imagensdash/container.png" alt=""></a>
+                                    <a href="Câmaras/Câmara 4.html"><img src="assets/imagensdash/container.png" alt=""></a>
                                 </div>
-                                <div class="camara">
+                                <div class="camara" id="camara6">
                                     <span>Câmara 6</span>
                                     <a href="Dashboard.html"><img src="assets/imagensdash/container.png" alt=""></a>
                                 </div>
@@ -207,3 +207,62 @@
         <p>Ainda não tivemos nenhuma atualização...</p>
     </div>
 </body>
+
+    <script>
+    
+    const todasAsCamaras = document.querySelectorAll('.camara');
+
+    // Seleciona os elementos de câmara com imagens amarelas (instáveis)
+    const camerasInstaveis = document.querySelectorAll('.camara img[src*="container (1)"]');
+
+    // Seleciona os elementos de câmara com imagens vermelhas (em emergência)
+    const camerasEmergencia = document.querySelectorAll('.camara img[src*="container (2)"]');
+
+    // Conta o número de câmaras instáveis
+    const totalCamarasInstaveis = camerasInstaveis.length;
+
+    // Conta o número de câmaras em emergência
+    const totalCamarasEmergencia = camerasEmergencia.length;
+
+    // Conta o número total de câmaras
+    const totalCamaras = todasAsCamaras.length;
+   
+
+
+     // Atualiza os contadores de câmaras instáveis e em emergência com os números contados
+    document.querySelector('.kpi2 .digital h2').textContent = `${totalCamarasInstaveis} Câmaras`;
+    document.querySelector('.kpi3 .digital h2').textContent = `${totalCamarasEmergencia} Câmaras`;
+    document.querySelector('.kpi1 .digital h2').textContent = `${totalCamaras} Câmaras`;
+    
+    
+
+
+
+    if (status_geral == 1) {
+        // Seleciona o elemento de imagem dentro da câmara 1 e atualiza o atributo src com o caminho da imagem do caminhão verde
+        document.querySelector('#camara1 img').src = 'assets/imagensdash/container.png';
+    } else if (status_geral == 2) {
+        document.querySelector('#camara1 img').src = 'assets/imagensdash/container (1).png';
+    } else if (status_geral == 3) {
+        document.querySelector('#camara1 img').src = 'assets/imagensdash/container (2).png';
+    }
+
+    //PLANOS FUTUROS
+    //Atulizar Câmaras
+    // for (var cont = 1; cont <= totalCamaras; cont++) {
+    // // Constrói a ID da câmera com base no valor do contador
+    // var camaraId = '#camara' + cont;
+
+    // // Constrói o caminho da imagem com base no valor do contador
+    // var imagePath;
+
+    // if (status_geral == 1) {
+    //     imagePath = 'assets/imagensdash/container.png';
+    // } else if (status_geral == 2) {
+    //     imagePath = 'assets/imagensdash/container (1).png';
+    // } else if (status_geral == 3) {
+    //     imagePath = 'assets/imagensdash/container (2).png';
+    // }
+</script>
+
+
