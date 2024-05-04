@@ -243,8 +243,18 @@ body {
     margin-top: 10px;
 }
 
+/* slider das camaras */
+.scroll {
+    white-space: nowrap;
+    overflow-x: scroll;
+    padding-bottom: 54px;
+    padding-top: 57px;
+    scrollbar-color: #00c3ff #010104;
+}
+
 .divisao1,
 .divisao2 {
+    width: fit-content;
     display: flex;
     flex-direction: row;
     margin-left: 50px;
@@ -255,7 +265,8 @@ body {
     width: 90px;
     height: 90px;
     margin-right: 60px;
-
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 .setor span {
