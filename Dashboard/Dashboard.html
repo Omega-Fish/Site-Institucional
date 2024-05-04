@@ -190,7 +190,7 @@
 
                                   <canvas id="myChart"></canvas>
                                   <div class="titulo_chart">
-                                    <h3>Controlado</h3>
+                                    <h3 id="id_status_temperatura"></h3>
                                 </div>
                                 <div class="descricao_chart">
                                     <h5 style="color: #03F44E;">&#x2B24; Controlado </h5>
@@ -211,12 +211,12 @@
                     
                                 <div class="chartBox">
                                     <div class="titulo">
-                                        <h1>Medidor de Atividades <spans style="color: #00C3FF;">Críticas</spans></h1>
+                                        <h1>Medidor de Atividades <span style="color: #00C3FF;">Críticas</span></h1>
                                         <h1>Umidade</h1>
                                     </div>
                                   <canvas id="myChart2"></canvas>
                                   <div class="titulo_chart">
-                                    <h3>Controlado</h3>
+                                    <h3 id="id_status_umidade"></h3>
                                 </div>
                                 <div class="descricao_chart">
                                     <h5 style="color: #03F44E; ">&#x2B24; Controlado </h5>
@@ -258,13 +258,47 @@
 
 <script>
     var temperatura = 1
-    var umidade = 50 
+    var umidade = 49
     var tempo = 5 
+    var temperatura_gauge = temperatura
+    var umidade_gauge = umidade
     
     var unidade_tempo = `Dias`
     mensagem_temperatura.innerHTML = `${temperatura}°C`
     mensagem_umidade.innerHTML = `${umidade}%`
     mensagem_tempo.innerHTML = `${tempo} ${unidade_tempo}`
+
+    if(temperatura > 2 && temperatura < 3) {
+        temperatura_gauge = 3
+    } else if(temperatura > 4 && temperatura < 5) {
+        temperatura_gauge = 5
+    } 
+    else if(temperatura_gauge > 5.8) {
+        temperatura_gauge = 5.8
+    }
+
+    if(umidade > 95) {
+        umidade_gauge = 95
+    } else if (umidade < 40 && umidade > 18) {
+        umidade_gauge = 18
+    } else if(umidade < 5) {
+        umidade_gauge = -10
+    }
+
+    if(temperatura <= 2) {
+        id_status_temperatura.innerHTML = `<h4 style="color:#03F44E">Controlado</h4>`
+    } else if(temperatura <= 4) {
+        id_status_temperatura.innerHTML = `<h4 style="color:yellow">Instável</h4>`
+    } else {
+        id_status_temperatura.innerHTML = `<h4 style="color:red">Emergência</h4>`
+    }
+    if(umidade >= 50) {
+        id_status_umidade.innerHTML = `<h4 style="color:#03F44E">Controlado</h4>`
+    } else if(umidade >= 40) {
+        id_status_umidade.innerHTML = `<h4 style="color:yellow">Instável</h4>`
+    } else {
+        id_status_umidade.innerHTML = `<h4 style="color:red">Emergência</h4>`
+    }
 
 
     const ctx7 = document.getElementById('ultimo_grafico');
@@ -360,7 +394,7 @@
             circumference: 180,
             rotation: 270,
             cutout: '80%',
-            needleValue: temperatura * 18
+            needleValue: temperatura_gauge * 18
         }]
     };
     const gaugeNeedle = {
@@ -485,7 +519,7 @@
                 circumference: 180,
                 rotation: 270,
                 cutout: '80%',
-                needleValue: (umidade - 95) * -1
+                needleValue: (umidade_gauge - 95) * -1
             }]
         };
 
