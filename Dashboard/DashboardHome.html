@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
 </head>
 
-<body onclick="fecharPopup(); fecharAtualizacoes()">
+<body onclick="fecharPopup(); fecharAtualizacoes(); fecharLogout(); fecharConfiguracoes();">
 
     <!-- Sidebar -->
     <div class="headers">
@@ -22,14 +22,13 @@
 
 
             <li class="bx bx-home-alt icon"> <span class="texto">Dashboard</span></li>
-
-            <li class="bx bx-notepad"> <span class="texto">Comunicados</span> </li>
-            <li class="bx bx-cog"> <span class="texto">Configurações</span> </li>
+            
+            <li class="bx bx-notepad" onclick="exibirPopup(); event.stopPropagation(); "> <span class="texto">Alertas </span> </li>
             <li class="bx bx-refresh" onclick="exibirAtualizacoes(); event.stopPropagation();" > <span class="texto">Atualizações</span> </li>
 
             <div class="sidebar-end">
-                <li class="bx bx-user-circle"> <span class="texto">Logout</span></li>
-                <li id="mode" class="bx bx-sun"> <span id="modeText" class="mode-text texto">Light Mode</span></li>
+                <li class="bx bx-cog" onclick="exibirConfiguracoes(); event.stopPropagation();"> <span class="texto">Configurações</span> </li>
+                <li class="bx bx-user-circle" onclick="exibirLogout(); event.stopPropagation();"> <span class="texto">Logout</span></li>
             </div>
         </section>
         <div id="corpo" class="corpo">
@@ -37,12 +36,9 @@
                 <li id="toggle" class="bx bx-list-ul toggle"></li>
                 <h3>Dashboard</h3>
                 <div class="header-end">
-                    <li class='bx bx-search-alt-2'></li>
-                    <li id="sino" class='bx bx-bell' onclick="exibirPopup(); event.stopPropagation(); "></li>
 
                     <li onclick="AtivarDesativarFS()" class='bx bx-fullscreen'></li>
                     <h3>Josh Burton</h3>
-                    <li class='bx bx-cog settings'></li>
                 </div>
             </section>
             <section id="conteudo" class="div_pai">
@@ -216,6 +212,22 @@
         <p>Ainda não tivemos nenhuma atualização...</p>
     </div>
 </body>
+<div id="logout" class="logout">
+    <h2>Tem Certeza que deseja sair da conta?</h2>
+    <div class="botoes_logout">
+        <button class="botao2" onclick="fecharLogout()">Cancelar</button>
+        <a href="../login.html"><button class="botao1">Sair</button></a>
+    </div>
+    
+    
+</div>
+<div id="configuracoes" class="configuracoes">
+    <div class="box_config">
+    <h2>Configurações</h2> <br>
+    <p>Parte em Desenvolvimento...</p>
+    </div>
+    
+</div>
 
     <script>
     

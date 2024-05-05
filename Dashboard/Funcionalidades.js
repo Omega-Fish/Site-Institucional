@@ -32,27 +32,6 @@ function AtivarDesativarFS() {
 
 }
 
-// Botão Light Mode e Dark Mode
-
-document.addEventListener("DOMContentLoaded", function() {
-  const mode = document.getElementById('mode');
-  const body = document.getElementById('conteudo');
-
-
-  mode.addEventListener("click", () => {
-    
-      if(body.classList.contains("light")) {
-        body.classList.remove("light")
-        modeText.innerText = "Light Mode"; // Atualiza o texto do botão
-        mode.classList.replace('bx-moon', 'bx-sun'); // Substitui o ícone da lua pelo ícone do sol
-      } else {
-        body.classList.add("light")
-        modeText.innerText = "Dark Mode"; // Atualiza o texto do botão
-        mode.classList.replace('bx-sun', 'bx-moon'); // Substitui o ícone da lua pelo ícone do sol
-      }
-  })
-});
-
 document.addEventListener("DOMContentLoaded", function() {
   const toggle = document.getElementById('toggle')
   const sidebar = document.getElementById('sidebar')
@@ -82,6 +61,8 @@ function exibirPopup() {
   popup.style.display = 'block';
   verificacao = true; 
   atualizacoes.style.display = 'none';
+  logout.style.display = 'none';
+  configuracoes.style.display = 'none';
 }
 
 function fecharPopup() {
@@ -95,12 +76,46 @@ function exibirAtualizacoes() {
   atualizacoes.style.display = 'block';
   verificacao_atualizacao = true; 
   popup.style.display = 'none';
+  logout.style.display = 'none';
+  configuracoes.style.display = 'none';
 }
 
 function fecharAtualizacoes() {
   if (verificacao_atualizacao) {
     atualizacoes.style.display = 'none';
     verificacao_atualizacao = false; 
+  }
+}
+var verificacao_logout = false;
+
+function exibirLogout() {
+  logout.style.display = 'block';
+  verificacao_logout = true; 
+  atualizacoes.style.display = 'none';
+  popup.style.display = 'none';
+  configuracoes.style.display = 'none';
+}
+
+function fecharLogout() {
+  if (verificacao_logout) {
+    logout.style.display = 'none';
+    verificacao_logout = false; 
+  }
+}
+var verificacao_configuracoes = false;
+
+function exibirConfiguracoes() {
+  configuracoes.style.display = 'block';
+  verificacao_configuracoes = true; 
+  atualizacoes.style.display = 'none';
+  popup.style.display = 'none';
+  logout.style.display = 'none';
+}
+
+function fecharConfiguracoes() {
+  if (verificacao_configuracoes) {
+    configuracoes.style.display = 'none';
+    verificacao_configuracoes = false; 
   }
 }
 //Variáveis de Controle

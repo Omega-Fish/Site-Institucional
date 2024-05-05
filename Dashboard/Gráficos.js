@@ -94,18 +94,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 min: 0, // Define o limite mínimo do eixo y
                 max: 2, // Define o limite máximo do eixo y
                 ticks: {
+                    count: 5, // Defina o número desejado de labels no eixo y
                     callback: function(value, index, values) {
                         return value + '°C'; // Adiciona o símbolo de grau Celsius
                     },
             padding: 15 
         },
                 grid: {
-                    color: 'rgb(65, 65, 65)', // Cor das linhas de grade do eixo y
+                    color: 'rgb(35, 35, 35)', // Cor das linhas de grade do eixo y
                 }
             },
             x: {
                 grid: {
-                    color: 'rgb(65, 65,65)', // Cor das linhas de grade do eixo x
+                    color: 'rgb(35, 35,35)', // Cor das linhas de grade do eixo x
                 }
             }
         }
@@ -135,18 +136,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 min: 0, // Define o limite mínimo do eixo y
                 max: 2, // Define o limite máximo do eixo y
                 ticks: {
+                    count: 5, // Defina o número desejado de labels no eixo y
                     callback: function(value, index, values) {
                         return value + '°C'; // Adiciona o símbolo de grau Celsius
                     },
             padding: 15 
         },
                 grid: {
-                    color: 'rgb(65, 65, 65)', // Cor das linhas de grade do eixo y
+                    color: 'rgb(35, 35, 35)', // Cor das linhas de grade do eixo y
                 }
             },
             x: {
                 grid: {
-                    color: 'rgb(65, 65,65)', // Cor das linhas de grade do eixo x
+                    color: 'rgb(35, 35,35)', // Cor das linhas de grade do eixo x
                 }
             }
         }
@@ -176,18 +178,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 min: 0, // Define o limite mínimo do eixo y
                 max: 2, // Define o limite máximo do eixo y
                 ticks: {
+                    count: 5, // Defina o número desejado de labels no eixo y
                     callback: function(value, index, values) {
                         return value + '°C'; // Adiciona o símbolo de grau Celsius
                     },
             padding: 15 
         },
                 grid: {
-                    color: 'rgb(65, 65, 65)', // Cor das linhas de grade do eixo y
+                    color: 'rgb(35, 35, 35)', // Cor das linhas de grade do eixo y
                 }
             },
             x: {
                 grid: {
-                    color: 'rgb(65, 65,65)', // Cor das linhas de grade do eixo x
+                    color: 'rgb(35, 35,35)', // Cor das linhas de grade do eixo x
                 }
             }
         }
@@ -216,18 +219,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 min: 52, // Define o limite mínimo do eixo y
                 max: 53, // Define o limite máximo do eixo y
                 ticks: {
+                    count: 5, // Defina o número desejado de labels no eixo y
                     callback: function(value, index, values) {
                         return value + '%'; // Adiciona o símbolo de porcentagem
                     },
             padding: 15 
         },
                 grid: {
-                    color: 'rgb(65, 65, 65)', // Cor das linhas de grade do eixo y
+                    color: 'rgb(35, 35, 35)', // Cor das linhas de grade do eixo y
                 }
             },
             x: {
                 grid: {
-                    color: 'rgb(65, 65,65)', // Cor das linhas de grade do eixo x
+                    color: 'rgb(35, 35,35)', // Cor das linhas de grade do eixo x
                 }
             }
         }
@@ -257,18 +261,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 min: 52, // Define o limite mínimo do eixo y
                 max: 53, // Define o limite máximo do eixo y
                 ticks: {
+                    count: 5, // Defina o número desejado de labels no eixo y
                     callback: function(value, index, values) {
                         return value + '%'; // Adiciona o símbolo de porcentagem
                     },
             padding: 15 
         },
                 grid: {
-                    color: 'rgb(65, 65, 65)', // Cor das linhas de grade do eixo y
+                    color: 'rgb(35, 35, 35)', // Cor das linhas de grade do eixo y
                 }
             },
             x: {
                 grid: {
-                    color: 'rgb(65, 65,65)', // Cor das linhas de grade do eixo x
+                    color: 'rgb(35, 35,35)', // Cor das linhas de grade do eixo x
                 }
             }
         }
@@ -299,18 +304,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 min: 52, // Define o limite mínimo do eixo y
                 max: 53, // Define o limite máximo do eixo y
                 ticks: {
+                    count: 5, // Defina o número desejado de labels no eixo y
                     callback: function(value, index, values) {
                         return value + '%'; // Adiciona o símbolo de porcentagem
                     },
             padding: 15 
         },
                 grid: {
-                    color: 'rgb(65, 65, 65)', // Cor das linhas de grade do eixo y
+                    color: 'rgb(35, 35, 35)', // Cor das linhas de grade do eixo y
                 }
             },
             x: {
                 grid: {
-                    color: 'rgb(65, 65,65)', // Cor das linhas de grade do eixo x
+                    color: 'rgb(35, 35,35)', // Cor das linhas de grade do eixo x
                 }
             }
         }

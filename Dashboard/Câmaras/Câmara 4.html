@@ -14,7 +14,7 @@
     <script src="../Gráficos.js"></script>
 </head>
 
-<body onclick="fecharPopup(); fecharAtualizacoes()">
+<body onclick="fecharPopup(); fecharAtualizacoes(); fecharLogout(); fecharConfiguracoes();">
 
     <!-- Sidebar -->
     <div class="headers">
@@ -27,13 +27,14 @@
             </li>
             
 
-            <li class="bx bx-notepad"> <span class="texto">Comunicados</span> </li>
-            <li class="bx bx-cog"> <span class="texto">Configurações</span> </li>
+            <li class="bx bx-notepad"  onclick="exibirPopup(); event.stopPropagation();"> <span class="texto">Alertas</span> </li>
+           
             <li class="bx bx-refresh" onclick="exibirAtualizacoes(); event.stopPropagation();"> <span class="texto">Atualizações</span> </li>
 
             <div class="sidebar-end">
-                <li class="bx bx-user-circle"> <span class="texto">Logout</span></li>
-                <li id="mode" class="bx bx-sun"> <span id="modeText" class="mode-text texto">Light Mode</span></li>
+                <li class="bx bx-cog" onclick="exibirConfiguracoes(); event.stopPropagation();"> <span class="texto">Configurações</span> </li>
+                <li class="bx bx-user-circle" onclick="exibirLogout(); event.stopPropagation();"> <span class="texto">Logout</span></li>
+                
             </div>
         </section>
         <div id="corpo" class="corpo">
@@ -43,12 +44,10 @@
                 <h3>-</h3>
                 <h3 style="white-space: nowrap;">Câmara 4</h3>
                 <div class="header-end">
-                    <li class='bx bx-search-alt-2'></li>
-                    <li class='bx bx-bell' onclick="exibirPopup(); event.stopPropagation();"></li>
-
+ 
                     <li onclick="AtivarDesativarFS()" class='bx bx-fullscreen'></li>
                     <h3>Josh Burton</h3>
-                    <li class='bx bx-cog settings'></li>
+                    
                 </div>
             </section>
             <section id="conteudo" class="div_pai">
@@ -253,6 +252,22 @@
         <h2>Atualizações</h2>
         <p>Ainda não tivemos nenhuma atualização...</p>
     </div>
+    <div id="logout" class="logout">
+        <h2>Tem Certeza que deseja sair da conta?</h2>
+        <div class="botoes_logout">
+            <button class="botao2" onclick="fecharLogout()">Cancelar</button>
+            <a href="../../login.html"><button class="botao1">Sair</button></a>
+        </div>
+        
+        
+    </div>
+    <div id="configuracoes" class="configuracoes">
+        <div class="box_config">
+        <h2>Configurações</h2> <br>
+        <p>Parte em Desenvolvimento...</p>
+        </div>
+        
+    </div>
 
 </body>
 
@@ -362,6 +377,7 @@ if(umidade >= 50) {
             scales: {
                 y: {
                     ticks: {
+                        count: 5, // Defina o número desejado de labels no eixo y
                         callback: function (value, index, values) {
                             return value + '%'; // Adiciona o símbolo de porcentagem
                         },
@@ -369,7 +385,7 @@ if(umidade >= 50) {
                     },
                     position: 'left',
                     grid: {
-                        color: 'rgb(65, 65, 65)', // Cor das linhas de grade do eixo y
+                       
                     },
                     yAxisID: 'y',
                 },
@@ -379,7 +395,7 @@ if(umidade >= 50) {
                     display: true,
                     position: 'right',
                     grid: {
-                        color: 'rgb(65, 65, 65)', // Cor das linhas de grade do eixo y
+                        color: 'rgb(35, 35, 35)', // Cor das linhas de grade do eixo y
                     },
                     yAxisID: 'y1',
                 }
@@ -387,7 +403,7 @@ if(umidade >= 50) {
 
                 x: {
                     grid: {
-                        color: 'rgb(65, 65,65)', // Cor das linhas de grade do eixo x
+                        color: 'rgb(35, 35,35)', // Cor das linhas de grade do eixo x
                     }
                 }
             }

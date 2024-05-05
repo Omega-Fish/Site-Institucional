@@ -15,7 +15,7 @@ body {
 .sidebar {
     width: 15%;
     height: 100vh;
-    border-right: 3px solid #00C3FF;
+    border-right: 2px solid #00C3FF;
     display: flex;
     flex-direction: column;
     background-color: #111111;
@@ -90,7 +90,7 @@ body {
     display: flex;
     align-items: center;
     background-color: #111111;
-    border-bottom: 3px solid #00C3FF;
+    border-bottom: 2px solid #00C3FF;
     width: 100%;
     height: 50px;
     color: white;
@@ -169,7 +169,7 @@ body {
     text-align: center;
     background: linear-gradient(to bottom, #111111, #111111);
     width: 28%;
-    border: 3px #00C3FF solid;
+    border: 2px #00C3FF solid;
     color: white;
     border-radius: 10px;
     height: 105px;
@@ -219,45 +219,124 @@ font-size: 0.9rem;
     width: 97%;
 }
 
-.light {
-    background-color: rgb(255, 255, 255);
-}
-
 .popup {
     display: none;
+    color: white;
     opacity: 0;
-    border: solid 3px #00C3FF;
+    border: solid 2px #00C3FF;
     padding: 20px;
     border-radius: 9px;
     width: 800px;
     height: 400px;
     z-index: 999;
-    background-color: rgb(255, 255, 255);
+    background-color: #111111;
     animation: fadeInPopup 0.3s ease forwards;
-    margin-top: -690px;
-    margin-left: 280px;
+    margin-top: -90vh;
+    margin-left: 40vh;
 }
 .atualizacoes {
     display: none;
+    color: white;
     opacity: 0;
-    border: solid 3px #00C3FF;
+    border: solid 2px #00C3FF;
     padding: 20px;
     border-radius: 9px;
     width: 800px;
     height: 400px;
     z-index: 999;
-    background-color: rgb(255, 255, 255);
+    background-color: #111111;
     animation: fadeInPopup 0.3s ease forwards;
-    margin-top: -690px;
-    margin-left: 280px;
+    margin-top: -90vh;
+    margin-left: 40vh;
 }
+.configuracoes {
+    display: none;
+    text-align: center;
+    color: white;
+    opacity: 0;
+    border: solid 2px #00C3FF;
+    padding: 20px;
+    border-radius: 9px;
+    width: 600px;
+    height: 300px;
+    z-index: 999;
+    background-color: #111111;
+    animation: fadeInPopup 0.3s ease forwards;
+    margin-top: -80vh;
+    margin-left: 50vh;
+}
+.box_config {
+    display: flex;
+    font-size: 20px;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.logout {
+    display: none;
+    color: white;
+    text-align: center;
+    opacity: 0;
+    border: solid 2px #00C3FF;
+    padding: 20px;
+    border-radius: 9px;
+    width: 500px;
+    height: 130px;
+    z-index: 999;
+    background-color: #111111;
+    animation: fadeInPopup 0.3s ease forwards;
+    margin-top: -75vh;
+    margin-left: 58vh;  
+}
+.botoes_logout {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+} 
+.botoes_logout .botao1 {
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    background: radial-gradient(100% 70% at 50% 0%, #ffffff 0%, #ff0000 100%);
+    padding: 0 52px;
+    border-radius: 7px;
+    color: #ffffff;
+    height: 35px;
+    font-size: 16px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    transition: transform 0.15s ease;
+}
+.botoes_logout .botao2 {
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    background: radial-gradient(100% 70% at 50% 0%, #ffffff 0%, #00C3FF 100%);
+    padding: 0 32px;
+    border-radius: 7px;
+    color: #000000;
+    height: 35px;
+    font-size: 16px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    transition: transform 0.15s ease;
+}
+.botoes_logout .botao1:hover {
+    transform: scale(1.05);
+  }
+  .botoes_logout .botao2:hover {
+    transform: scale(1.05);
+  }
 @keyframes fadeInPopup {
     from {
         opacity: 0;
         
     }
     to {
-        opacity: 0.95;
+        opacity: 1;
     }
 }
 
@@ -331,7 +410,7 @@ Conteudo / Gráficos
 }
 
 .conteudo .container {
-    border: solid 3px #ffffff;
+    border: solid 2px white;
     border-radius: 9px;
     background: linear-gradient(180deg, rgba(1, 1, 1, 1) 0%, rgba(0, 3, 35, 1) 100%);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -424,7 +503,7 @@ Gráfico Gauge
     margin: 8px 0px;
     padding: 50px 15px;
     border-radius: 20px;
-    border: solid 3px rgb(255, 255, 255);
+    border: solid 2px white;
     background: linear-gradient(to bottom, #000000, rgb(0, 1, 39));
   }
 
@@ -487,7 +566,7 @@ Gráfico Gauge
     width: 92.5%;
     height: 30%;
     margin: 2vh 0px;
-    border: solid 3px white;
+    border: solid 2px white;
     padding: 5px 10px;
     padding-bottom: 20px;
     border-radius: 10px;
