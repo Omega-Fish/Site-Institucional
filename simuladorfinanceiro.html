@@ -7,6 +7,8 @@
     <title>Simulador Financeiro</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="Assets/Imagens/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
 
 </head>
 
@@ -21,9 +23,9 @@
                     <li><a href="index.html">HOME</a></li>
                     <li><a href="contato.html">CONTATO</a></li>
                     <li><a href="#">SIMULADOR</a></li>
-                    <li><a href="#">DASHBOARD</a></li>
+                    <li><a href="login.html">DASHBOARD</a></li>
                     <li class="cadastro"><a href="#"> <img src="Assets/Imagens/SVG.png" alt=""></li>
-                    <li class="Imagem"><a href="login.html">Bem Vindo(a) <br><b>Entrar</b> ou <b>Cadastrar</b></a></li>
+                    <li class="Imagem"><a href="cadastro.html">Bem Vindo(a) <br><b>Entrar</b> ou <b>Cadastrar</b></a></li>
 
                 </ul>
 
@@ -36,9 +38,9 @@
         <div class="inputs3">
             <h1>Simulador Financeiro</h1><br>
 
-            <span class="span">Insira o total de peixe em KG por mês: </span><input type="text" id="input_kgpeixe"
+            <span class="span">Insira o total de peixe em KG por mês: </span><input type="number" id="input_kgpeixe"
                 placeholder="Digite o total de peixe em KG">
-            <span class="span"> Insira o valor do peixe/KG em reais: </span><input type="text" id="input_valorkg"
+            <span class="span"> Insira o valor do peixe/KG em reais: </span><input type="number" id="input_valorkg"
                 placeholder="Digite o valor em reais"><br>
 
             <button class="botão" onclick="calcular()">Calcular</button> <br>

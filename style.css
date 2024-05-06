@@ -1,9 +1,13 @@
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Roboto', sans-serif;
   width: 100%; /* Ocupa toda a largura disponível */
   max-width: 1600px; /* Largura máxima definida em pixels ou porcentagem */
   margin: 0 auto; /* Centraliza o conteúdo horizontalmente */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
 }
 
 section {
@@ -18,6 +22,7 @@ header {
   align-items: center;
   border-bottom: solid 4px #00C3FF;
 }
+
 a {
   text-decoration: none; /* Remover sublinhado */
   color: inherit; /* Herdar a cor do texto do elemento pai */
@@ -27,6 +32,7 @@ h3 {
   color: #00C3FF;
   font-size: 12px;
 }
+
 
 h2 {
   font-size: 30px;
@@ -49,8 +55,9 @@ h2 {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  font-size: 11px;
-  font-weight: 750;
+  font-size: 13.5px;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .menu li {
@@ -60,19 +67,21 @@ h2 {
 .menu nav ul li a {
   color: #fff;
   text-decoration: none;
-  padding: 10px 25px;
+  padding: 10px 30px;
   display: inline-block;
+  transition: transform 0.25s ease;
 }
 
 .menu nav ul li a:hover {
   color: #00C3FF;
+  transform: scale(1.07);
 }
 
 .cadastro {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: -90px;
+  margin-right: -105px;
 }
 
 
@@ -80,7 +89,7 @@ h2 {
 .imagem {
   display: flex;
   width: 20%;
-  padding-right: 30px;
+  padding-right: 50px;
   margin-left: -30px;
   margin-top: -0px;
 }
@@ -112,7 +121,7 @@ h2 {
 }
 
 .paragrafo1 {
-  font-size: 14px;
+  font-size: 17px;
 }
 
 .text {
@@ -195,7 +204,7 @@ html {
   align-items: center;
   background: #111111;
   color: white;
-  border: solid 3px #00C3FF;
+  border: solid 4px #00C3FF;
   border-radius: 9px;
   margin-top: -40px;
   margin-left: 30px;
@@ -213,9 +222,12 @@ html {
 .seção_intermediaria .paredes {
   display: flex;
   align-items: center;
-  border-left: solid #00C3FF 2px;
+  border-left: solid #00C3FF 4px;
   margin-left: 35px;
 
+}
+.seção_intermediaria h5 {
+  font-size: 15px;
 }
 
 
@@ -232,7 +244,7 @@ html {
 
 .section2 .container {
   display: flex;
-  margin: 20px;
+  margin-top: 20px;
 }
 
 .section2 .right-content {
@@ -251,7 +263,7 @@ html {
 .section2 .paragrafo {
 
   margin-top: -20px;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .section2 .left-content {
@@ -320,7 +332,7 @@ font-size: 14px;
 
 
 
-terceira seção 
+/* terceira seção  */
 
 
 */
@@ -339,12 +351,11 @@ terceira seção
 .section3 {
   background-color: #111111;
   color: white;
-  margin-top: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 0px 150px;
+  padding: 30px 150px;
 
 }
 
@@ -363,7 +374,6 @@ terceira seção
   justify-content: center;
   width: 40%;
   height: 100%;
-  padding-top: 50px;
   margin-right: 20px;
 }
 
@@ -378,7 +388,7 @@ terceira seção
 .section3 .paragrafo {
   margin-top: -10px;
   line-height: 20px;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .section3 .left-content {
@@ -387,7 +397,8 @@ terceira seção
   align-items: center;
   width: 50%;
   height: 100%;
-  padding-top: 150px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .section3 .left-content img {
@@ -399,21 +410,35 @@ terceira seção
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-top: 35px;
 }
 
 .section3 .bloco_indv1,
-.section3 .bloco_indv2,
+.section3 .bloco_indv2
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 18px;
+  background-color: #101111;
+  border: solid 2.5px #00C3FF;
+  margin-right: 10px;
+  text-align: center;
+  width: 100%;
+}
+
 .section3 .bloco_indv3,
 .section3 .bloco_indv4 {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 7px 60px;
+  padding: 14px 15px;
   border-radius: 18px;
   background-color: #101111;
-  border: solid 1.5px #00C3FF;
+  border: solid 2.5px #00C3FF;
   margin-right: 10px;
   text-align: center;
   width: 100%;
@@ -423,14 +448,14 @@ terceira seção
 .section3 .bloco_indv2 img,
 .section3 .bloco_indv3 img,
 .section3 .bloco_indv4 img {
-  width: 55%;
+  width: 35%;
 }
 
 .section3 .bloco_indv1 h4,
 .section3 .bloco_indv2 h4,
 .section3 .bloco_indv3 h4,
 .section3 .bloco_indv4 h4 {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
 }
 
@@ -506,7 +531,7 @@ terceira seção
     */
 
 .section4 {
-  margin-top: 20px;
+  margin-top: 50px;
   display: flex;
   flex-direction: row;
 
@@ -514,11 +539,11 @@ terceira seção
 
 .section4 .container {
   display: flex;
-  margin: 20px;
 }
 
 .section4 .right-content {
   width: 50%;
+  margin-left: 70px;
 
 }
 
@@ -532,7 +557,7 @@ terceira seção
 
 .section4 .paragrafo {
   margin-top: -20px;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .section4 li p {
@@ -544,6 +569,7 @@ terceira seção
   align-items: center;
   width: 60%;
   justify-content: center;
+  
 }
 
 .section4 .left-content img {
@@ -553,10 +579,10 @@ terceira seção
 
 .section4 .topic-list {
   margin-left: -20px;
-  font-size: 13px;
+  font-size: 16px;
 }
 .section4 li p {
-font-size: 13px;
+font-size: 16px;
 }
 
 
@@ -572,14 +598,14 @@ font-size: 13px;
   flex-direction: column;
   background-color: #111111;
   color: white;
-  height: 450px;
+  height: 480px;
   text-align: center;
 }
 
 .section5 .boxes {
   display: flex;
   flex-direction: row;
-  margin-top: 40px;
+  margin-top: 30px;
 
 }
 
@@ -589,7 +615,7 @@ font-size: 13px;
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 13px;
+  font-size: 14px;
   width: 25%;
 }
 
@@ -605,7 +631,7 @@ font-size: 13px;
 }
 
 .section5 .box1 h3 {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .section5 .box1 p {
@@ -620,7 +646,7 @@ font-size: 13px;
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 13px;
+  font-size: 14px;
   width: 25%;
 }
 
@@ -632,7 +658,7 @@ font-size: 13px;
 }
 
 .section5 .box2 h3 {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .section5 .box2 p {
@@ -647,7 +673,7 @@ font-size: 13px;
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 13px;
+  font-size: 14px;
   width: 25%;
 }
 
@@ -659,7 +685,7 @@ font-size: 13px;
 }
 
 .section5 .box3 h3 {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .section5 .box3 p {
@@ -674,7 +700,7 @@ font-size: 13px;
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 13px;
+  font-size: 14px;
   width: 25%;
 }
 
@@ -686,13 +712,16 @@ font-size: 13px;
 }
 
 .section5 .box4 h3 {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .section5 .box4 p {
   margin-top: -7px;
   padding: 0% 10%;
   line-height: 1.5;
+}
+.section5 h5 {
+  font-size: 16px;
 }
 
 
@@ -729,7 +758,7 @@ font-size: 13px;
 .section6 .paragrafo2 {
 
   margin-top: -20px;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .section6 .left-content {
@@ -740,13 +769,14 @@ font-size: 13px;
 }
 
 .section6 .left-content img {
-  width: 90%;
+  width: 85%;
+  border-radius: 30px;
 
 }
 
 .section6 .topic-list {
   margin-left: -40px;
-  font-size: 15px;
+  font-size: 14px;
 
 }
 .section6 .topic-item1 {
@@ -810,18 +840,22 @@ font-size: 14px;
   color: white;
   padding-bottom: 10px;
   border-top: #00C3FF solid 4px;
+  font-family: 'Montserrat', sans-serif;
+  
 }
 
 .footer h5 {
   color: #00C3FF;
-  font-size: 15px;
+  font-size: 18px;
   margin-bottom: 0px;
+  font-weight: 550;
 }
 
 .footer h6 {
   color: white;
-  font-size: 15px;
+  font-size: 14px;
   margin-bottom: 0px;
+  font-weight: 450;
 }
 
 .footer div {
@@ -831,12 +865,18 @@ font-size: 14px;
   justify-content: center;
   align-items: center;
   line-height: 2.0;
-  font-size: 13px;
+  font-size: 14px;
   text-align: center;
 }
 
 .footer div li {
   margin-top: 10px;
+  transition: transform 0.25s ease;
+}
+ 
+.footer div li:hover {
+  color: #00C3FF;
+  transform: scale(1.07);
 }
 
 .footer div img {
@@ -846,10 +886,10 @@ font-size: 14px;
 
 .copyright {
   text-align: center;
-  font-size: 16px;
+  font-size: 18px;
   background-color: #111111;
   color: white;
-  border-top: solid 3px gray;
+  border-top: solid 3px #00C3FF;
   padding-bottom: 1px;
 }
 
@@ -869,25 +909,25 @@ Tela de login
 }
 
 .tela_cadastro {
-  margin-top: 80px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 400px;
+  height: 500px;
 }
 
 .tela_cadastro .inputs {
-  width: 30%;
+  width: 35%;
   color: rgb(255, 255, 255);
   margin-top: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 90%;
+  height: 100%;
   background-color: #111111;
   border: solid 3px #00C3FF;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .inputs {
@@ -908,7 +948,8 @@ input {
 }
 
 .inputs .span {
-  font-size: 11px;
+  font-size: 14px;
+  margin-top: 20px;
   font-weight: 700;
   width: 80%;
   text-align: start;
@@ -916,9 +957,16 @@ input {
 
 .inputs .span2 {
   text-align: center;
-  font-size: 12px;
-  margin-top: 20px;
+  font-size: 14px;
+  transition: transform 0.25s ease;
 }
+
+.inputs .span2:hover {
+  color: #00C3FF;
+  transform: scale(1.07);
+}
+
+
 
 .inputs ::placeholder {
   color: rgba(145, 143, 143, 0.863);
@@ -949,6 +997,7 @@ input {
 
 
 
+
 /* 
 
 
@@ -965,76 +1014,92 @@ Tela de Cadastro
 }
 
 .tela_cadastro2 {
-  margin-top: 0px;
   display: flex;
+  margin-top: 0px;
   justify-content: center;
   align-items: center;
-  height: 600px;
+  height: 100%;
+
 }
 
-.tela_cadastro2 .inputs2 {
-  width: 35%;
-  color: rgb(255, 255, 255);
-  margin-top: 300px;
+.boxAll {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 800px;
-  background-color: #111111;
+  width: 70%;
   border: solid 3px #00C3FF;
-  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(255, 255, 255);
+  margin-top: 10px;
+  border-radius: 20px;
+  height: 630px;
+  padding-left: 40px;
+  background-color: #111111;
+  font-family: 'Montserrat', sans-serif;
+}
+.boxAll h1 {
+  margin-left: -50px;
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: -10px;
+}
+.tela_cadastro2 .boxInputs {
+  display: flex;
+  flex-direction: row;
+  padding-left: 50px;
+  margin-top: 0px;
 }
 
-.inputs2 {
-  border: solid 3px #32b9cd;
-  border-radius: 9px;
-
-}
-
-.inputs2 input {
+.boxInputs input {
   background-color: #111111;
   color: #fff;
   width: 70%;
   border: none;
   border-bottom: 1px solid rgb(255, 255, 255);
-  margin-top: 10px;
-  height: 60px;
+  margin-top: 5px;
+  height: 30px;
+}
+.boxInputs .input_isolada {
+  margin-top: 40px;
 }
 
-.inputs2 .span {
-  font-size: 11px;
+.boxInputs .span {
+  font-size: 14px;
   font-weight: 700;
+  margin-top: 20px;
   width: 80%;
   text-align: start;
 }
 
 /* estilização da mensagem de erro */
-.inputs2 .msg_erro{
+.boxInputs .msg_erro{
+  position: fixed;
+  z-index: 999;
   width: 75%;
-  color: #FF0000;
+  color: #ff1010;
+  opacity: 1;
   font-size: 14px;
   margin-top: 2px;
   display: none;
 }
 
-.inputs2 .span2 {
+.boxInputs .span2 {
   text-align: center;
   font-size: 12px;
   margin-top: 7px;
   margin-bottom: 7px;
 }
 
-.inputs2 ::placeholder {
+.boxInputs ::placeholder {
   color: rgba(145, 143, 143, 0.863);
 }
 
-.inputs2 h1 {
+.boxInputs h1 {
   font-size: 30px;
   margin-bottom: 15px;
 }
 
-.inputs2 .input1 {
+.boxInputs .input1 {
   padding-left: 30px;
   background-image: url('Assets/Imagens/CadastroVector\ \(6\).png');
   background-size: 4%;
@@ -1043,7 +1108,7 @@ Tela de Cadastro
   /* Posição do ícone */
 }
 
-.inputs2 .input2 {
+.boxInputs .input2 {
   padding-left: 30px;
   background-image: url('Assets/Imagens/CadastroVector\ \(7\).png');
   background-size: 4%;
@@ -1052,7 +1117,7 @@ Tela de Cadastro
   /* Posição do ícone */
 }
 
-.inputs2 .input3 {
+.boxInputs .input3 {
   padding-left: 30px;
   background-image: url('Assets/Imagens/CadastroVector\ \(7\).png');
   background-size: 4%;
@@ -1061,7 +1126,7 @@ Tela de Cadastro
   /* Posição do ícone */
 }
 
-.inputs2 .input3 {
+.boxInputs .input3 {
   padding-left: 30px;
   background-image: url('Assets/Imagens/CadastroVector\ \(6\).png');
   background-size: 4%;
@@ -1070,7 +1135,7 @@ Tela de Cadastro
   /* Posição do ícone */
 }
 
-.inputs2 .input4 {
+.inputs1 .input4 {
   padding-left: 30px;
   background-image: url('Assets/Imagens/Email.png');
   background-size: 5%;
@@ -1079,7 +1144,7 @@ Tela de Cadastro
   /* Posição do ícone */
 }
 
-.inputs2 .input5 {
+.inputs1 .input5 {
   padding-left: 30px;
   background-image: url('Assets/Imagens/Phone.png');
   background-size: 5%;
@@ -1088,13 +1153,36 @@ Tela de Cadastro
   /* Posição do ícone */
 }
 
-.inputs2 .input6 {
+.inputs1 .input6 {
   padding-left: 30px;
   background-image: url('Assets/Imagens/Key\ Security.png');
   background-size: 5%;
   background-repeat: no-repeat;
   background-position: 5px center;
   /* Posição do ícone */
+}
+.boxAll .botao_cadastro {
+  margin-top: 30px;
+  
+}
+.boxAll .botao_cadastro button {
+  margin-left: -50px;
+  padding: 10px 80px;
+  display: flex;
+  align-items: center;
+}
+
+.boxAll .cadastro_mensagem {
+  margin-left: -50px;
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 15px; 
+  transition: transform 0.25s ease;
+}
+
+.boxAll .cadastro_mensagem:hover {
+  color: #00C3FF;
+  transform: scale(1.07);
 }
 
 
@@ -1115,6 +1203,7 @@ Tela de Contato
   align-items: center;
   list-style: none;
   margin-top: 30px;
+  
 }
 
 .div_esquerda {
@@ -1129,6 +1218,7 @@ Tela de Contato
   padding: 50px 0px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
+  border: 3px solid #00C3FF;
 }
 
 .div_direita {
@@ -1139,6 +1229,7 @@ Tela de Contato
   padding: 50px 30px;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+  border: 3px solid #00C3FF;
 }
 .div_direita h1{
   text-align: center;
@@ -1150,13 +1241,15 @@ Tela de Contato
 
 .lista1 {
   margin-bottom: 20px;
+  font-size: 17px;
 }
 .lista2 {
   margin-bottom: 20px;
+  font-size: 17px;
 }
 
 .contato .lista1 img {
-  margin-right: 40px;
+  margin-right: 34px;
   width: 80%;
   height: auto;
 }
@@ -1192,6 +1285,7 @@ Tela de Contato
 }
 .div_direita h3 {
   margin-bottom: 50px;
+  font-size: 16px;
 }
 
 
@@ -1232,7 +1326,7 @@ Simulador Financeiro
   height: 90%;
   background-color: #111111;
   border: solid 3px #00C3FF;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   position: relative;
   
 }
@@ -1249,12 +1343,12 @@ Simulador Financeiro
   width: 70%;
   border: none;
   border-bottom: 1px solid rgb(255, 255, 255);
-  margin-top: 10px;
-  height: 60px;
+  margin-top: 5px;
+  height: 30px;
 }
 
 .inputs3 .span {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
   width: 70%;
   text-align: start;
@@ -1278,9 +1372,8 @@ Simulador Financeiro
 }
 
 #div_mensagem{
- 
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  margin: 20px;
+  font-family: 'Montserrat', sans-serif;
+  margin: 20px
  
 }
 
