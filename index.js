@@ -21,13 +21,13 @@ function cadastrar() {
     }
 
     /* Validação da senha */
-    if(senha.length > 5 && (senha.indexOf('@') > -1 || senha.indexOf('#') > -1 || senha.indexOf('$') > -1 || senha.indexOf('%') > -1)) {
+    if(senha.length < 6 || senha.indexOf('&') == -1) {
+        ipt_senha.style.borderBottom = '1px solid #FF0000';
+        erro_senha.style.display = 'block'
+    } else {
         ipt_senha.style.borderBottom = '1px solid #FFFFFF';
         erro_senha.style.display = 'none'
         aceito++
-    } else {
-        ipt_senha.style.borderBottom = '1px solid #FF0000';
-        erro_senha.style.display = 'block'
     }
 
     /* Validação da confirmação da senha */
@@ -95,4 +95,18 @@ function cadastrar() {
         window.open('login.html', '_self')
     }
 
+}
+
+// Validação para fazer o login
+function entrar(){
+    var usuario = ipt_nome.value;
+    var senha = ipt_senha.value;
+    var chave = ipt_chave.value;
+
+    if (usuario == "Luana Oliveira" && senha == "123456" && chave == '15bc0953978a6b450e42baa3675574eb'){
+        alert(`Acesso Autorizado.`)
+        window.open('Dashboard/DashboardHome.html', '_self')
+    } else {
+        alert(`Acesso Negado, tente novamente.`)
+    }
 }

@@ -8,6 +8,7 @@
     <link rel="icon" href="Assets/Imagens/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+  <script src="./index.js"></script>
 </head>
 <body class="body_cadastro">
     <header>
@@ -34,13 +35,13 @@
            <h1>Login</h1>
             <span class="span">Usuário:</span> <input type="text" id="ipt_nome" class="input1" placeholder="Digite seu usuário"> 
                 <br> 
-            <span class="span">Senha:</span> <input type="text" id="ipt_senha" class="input2" placeholder="Digite sua senha">
+            <span class="span">Senha:</span> <input type="password" id="ipt_senha" class="input2" placeholder="Digite sua senha">
             <br> 
             <span class="span">Chave de Acesso:</span> <input type="text" id="ipt_chave" class="input2" placeholder="Chave de Acesso">
             <br> <br>
 
       
-           <button class="botão">Cadastrar</button>
+           <button onclick="entrar()" class="botão">Cadastrar</button>
            <br>
            <a href="cadastro.html" class="span2"> 
            <span>Ainda não tem uma conta? Crie uma conta</span>
