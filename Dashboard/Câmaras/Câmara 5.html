@@ -86,9 +86,9 @@
                                         <button class="tablinks active primeiro_botao"
                                             onclick="openTab(event, 'chartTab1')">Tempo Real</button>
                                         <button class="tablinks" onclick="openTab(event, 'chartTab2')">Última
-                                            Semana</button>
+                                            Hora</button>
                                         <button class="tablinks ultimo_botao" onclick="openTab(event, 'chartTab3')">Último
-                                            Mês</button>
+                                            Dia</button>
                                     </div>
                                 </div>
     
@@ -103,14 +103,14 @@
                                 <div id="chartTab2" class="tabcontent">
                                     <canvas id="Temp_Semana"></canvas>
                                     <div class="legenda-x">
-                                        <span>Tempo (Semanas)</span>
+                                        <span>Tempo (Minutos)</span>
                                     </div>
                                 </div>
     
                                 <div id="chartTab3" class="tabcontent">
                                     <canvas id="Temp_Mes"></canvas>
                                     <div class="legenda-x">
-                                        <span>Tempo (Mês)</span>
+                                        <span>Tempo (Horas)</span>
                                     </div>
                                 </div>
     
@@ -129,9 +129,9 @@
                                         <button class="tablinks2 active primeiro_botao"
                                             onclick="openTab2(event, 'chartTab4')">Tempo Real</button>
                                         <button class="tablinks2" onclick="openTab2(event, 'chartTab5')">Última
-                                            Semana</button>
+                                            Hora</button>
                                         <button class="tablinks2 ultimo_botao" onclick="openTab2(event, 'chartTab6')">Último
-                                            Mês</button>
+                                            Dia</button>
                                     </div>
                                 </div>
     
@@ -147,14 +147,14 @@
                                 <div id="chartTab5" class="tabcontent2">
                                     <canvas id="Umid_Semana"></canvas>
                                     <div class="legenda-x">
-                                        <span>Tempo (Semanas)</span>
+                                        <span>Tempo (Minutos)</span>
                                     </div>
                                 </div>
     
                                 <div id="chartTab6" class="tabcontent2">
                                     <canvas id="Umid_Mes"></canvas>
                                     <div class="legenda-x">
-                                        <span>Tempo (Mês)</span>
+                                        <span>Tempo (Horas)</span>
                                     </div>
                                 </div>
                                 
@@ -245,7 +245,24 @@
     </div>
     <div id="popup" class="popup">
         <h2>Notificações</h2>
-        <p>Suas notificações aparecerão aqui...</p>
+        <div class="alertas">
+            <div class="instavel">
+                <img src="../assets/imagensdash/atencao.png">
+                <div>
+                    <h4>Instabilidade - Câmara 2</h4>
+                    <p>Temperatura: 3°C, Umidade: 45%</p>
+                    <p>Data: 08/05/2024 - 09:50:45</p>
+                </div>
+            </div>
+            <div class="emergencia">
+                <img src="../assets/imagensdash/alarm.png">
+                <div>
+                    <h4>Emergência - Câmara 2</h4>
+                    <p>Temperatura: 5°C, Umidade: 20%</p>
+                    <p>Data: 08/05/2024 - 15:57:44</p>
+                </div>
+            </div>
+        </div>
     </div>
     <div id="atualizacoes" class="atualizacoes">
         <h2>Atualizações</h2>
@@ -348,8 +365,8 @@ if(umidade >= 50) {
         type: 'line',
         data: {
 
-            labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
-                "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+            labels: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
+                "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
 
             datasets: [{
                 label: 'Umidade',

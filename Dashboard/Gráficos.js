@@ -79,10 +79,10 @@ document.addEventListener('DOMContentLoaded', function () {
     var Temp_TempoReal = new Chart(ctx1, {
         type: 'line',
         data: {
-            labels: ['0', '2', '4', '6', '8'],
+            labels: ['0', '2', '4', '6', '8', '10'],
             datasets: [{
                 label: 'Temperatura',
-                data: [0.3, 0.6, 1, 0.8, 0.3],
+                data: [0.3, 0.6, 1, 0.8, 0.3, 0.5],
                 borderColor: 'rgb(0, 195, 255)',
                 backgroundcolor: 'rgb(13, 14, 43)',
                 color: 'rgb(255, 255, 255)',
@@ -121,10 +121,10 @@ document.addEventListener('DOMContentLoaded', function () {
         type: 'line',
         data: {
   
-            labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4', 'Semana 5', 'Semana 6', 'Semana 7'],
+            labels: ['8', '16', '24', '32', '40', '48', '56', '60'],
             datasets: [{
                 label: 'Temperatura',
-                data: [0.3, 0.6, 1, 0.8, 1.3, 1.1, 0.8],
+                data: [0.3, 0.6, 1, 0.8, 1.3, 1.1, 0.8, 1.0],
                 borderColor: 'rgb(0, 195, 255)',
                 backgroundcolor: 'rgb(13, 14, 43)',
                 lineTension: 0.3
@@ -163,10 +163,10 @@ document.addEventListener('DOMContentLoaded', function () {
         type: 'line',
         data: {
   
-            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'],
+            labels: ['3h', '6h', '9h', '12h', '15h', '18h', '21h', '00h',],
             datasets: [{
                 label: 'Temperatura',
-                data: [0.5, 0.6, 1, 0.8, 0.6, 0.2, 0],
+                data: [0.5, 0.6, 1, 0.8, 0.6, 0.2, 0, 1],
                 borderColor: 'rgb(0, 195, 255)',
                 backgroundcolor: 'rgb(13, 14, 43)',
                 lineTension: 0.3
@@ -204,10 +204,10 @@ document.addEventListener('DOMContentLoaded', function () {
     var Temp_TempoReal = new Chart(ctx4, {
         type: 'line',
         data: {
-            labels: ['0', '2', '4', '6', '8'],
+            labels: ['0', '2', '4', '6', '8', '10'],
             datasets: [{
                 label: 'Umidade',
-                data: [52, 53, 52, 52, 53, 53, 53],
+                data: [52, 53, 52, 52, 53, 53, 53, 54],
                 borderColor: 'rgb(0, 195, 255)',
                 backgroundcolor: 'rgb(13, 14, 43)',
                 lineTension: 0.3
@@ -216,8 +216,8 @@ document.addEventListener('DOMContentLoaded', function () {
         options: {
         scales: {
             y: {
-                min: 52, // Define o limite mínimo do eixo y
-                max: 53, // Define o limite máximo do eixo y
+                min: 51, // Define o limite mínimo do eixo y
+                max: 55, // Define o limite máximo do eixo y
                 ticks: {
                     count: 5, // Defina o número desejado de labels no eixo y
                     callback: function(value, index, values) {
@@ -246,10 +246,10 @@ document.addEventListener('DOMContentLoaded', function () {
         type: 'line',
         data: {
   
-            labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4', 'Semana 5', 'Semana 6', 'Semana 7'],
+            labels: ['8', '16', '24', '32', '40', '48', '56', '60'],
             datasets: [{
                 label: 'Umidade',
-                data: [53, 52, 53, 52, 52, 52, 53],
+                data: [53, 52, 53, 52, 52, 52, 53, 53],
                 borderColor: 'rgb(0, 195, 255)',
                 backgroundcolor: 'rgb(13, 14, 43)',
                 lineTension: 0.3
@@ -258,8 +258,8 @@ document.addEventListener('DOMContentLoaded', function () {
         options: {
         scales: {
             y: {
-                min: 52, // Define o limite mínimo do eixo y
-                max: 53, // Define o limite máximo do eixo y
+                min: 51, // Define o limite mínimo do eixo y
+                max: 55, // Define o limite máximo do eixo y
                 ticks: {
                     count: 5, // Defina o número desejado de labels no eixo y
                     callback: function(value, index, values) {
@@ -289,10 +289,10 @@ document.addEventListener('DOMContentLoaded', function () {
         type: 'line',
         data: {
   
-            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'],
+            labels: ['3h', '6h', '9h', '12h', '15h', '18h', '21h', '00h'],
             datasets: [{
                 label: 'Umidade',
-                data: [52, 52, 53, 52, 53, 52, 53],
+                data: [52, 52, 53, 52, 53, 52, 53, 52],
                 borderColor: 'rgb(0, 195, 255)',
                 backgroundcolor: 'rgb(13, 14, 43)',
                 lineTension: 0.3
@@ -301,8 +301,8 @@ document.addEventListener('DOMContentLoaded', function () {
         options: {
         scales: {
             y: {
-                min: 52, // Define o limite mínimo do eixo y
-                max: 53, // Define o limite máximo do eixo y
+                min: 51, // Define o limite mínimo do eixo y
+                max: 55, // Define o limite máximo do eixo y
                 ticks: {
                     count: 5, // Defina o número desejado de labels no eixo y
                     callback: function(value, index, values) {

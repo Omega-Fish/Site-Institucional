@@ -76,7 +76,7 @@
          else {
 
             div_mensagem.innerHTML =`
-                O valor bruto da sua mercadoria é de <span style="color: #00C3FF;"> R$ ${bruto}</span><br>
+                O valor bruto da sua mercadoria é de <span style="color: #00C3FF;"> R$ ${bruto.toFixed(2)}</span><br>
                 O prejuízo sem a nossa solução é de <span style="color: red;">30%</span>* da mercadoria (<span style="color: red;">R$ ${perda}</span>). Totalizando um valor líquido de <span style="color: red;">R$ ${liquido}</span> <br>
                 Com a nossa solução, seu prejuízo diminuiria para apenas <span style="color: #00FF00;">15%</span> (<span style="color: #00FF00;">R$ ${lucro1}</span>). Totalizando um valor líquido de <span style="color: #00FF00;">R$ ${lucro2} </span><br>
                 O aumento da sua receita por mês, portanto, é de: <br><br>
@@ -88,7 +88,7 @@
                 `;
             }
             div_mensagem.innerHTML += `<br>Totalizando um aumento anual de <span style="color: #00FF00;">R$ ${lucroanual}</span><br>
-            <span style="font-size: 10px;">Fonte: EMBRAPA</span>`
+            <span style="font-size: 10px;">*Fonte: EMBRAPA</span>`
 
             div_calculo.style.height = '830px'
 
