@@ -240,8 +240,8 @@ body {
     scrollbar-color: #111111 #ffffff;
 }
 
-.divisao1,
-.divisao2 {
+#divisao1,
+#divisao2 {
     width: fit-content;
     display: flex;
     flex-direction: row;
