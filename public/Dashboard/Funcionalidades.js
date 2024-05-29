@@ -167,35 +167,35 @@ if (status_temperatura > status_umidade) {
     status_geral = status_umidade;
 }
 
-window.onload = buscarCamaras()
+// window.onload = buscarCamaras()
 
-function buscarCamaras() {
-  fetch("http://localhost:3333/camaras/2").then(res => {
-    res.json().then(response => {
-      console.log(response)
-      mostrarCamaras(response)
-    })
-  })
-}
+// function buscarCamaras() {
+//   fetch("http://localhost:3333/camaras/2").then(res => {
+//     res.json().then(response => {
+//       console.log(response)
+//       mostrarCamaras(response)
+//     })
+//   })
+// }
 
-function mostrarCamaras(camaras) {
-  for (var i = 0; i < camaras.length; i++) {
+// function mostrarCamaras(camaras) {
+//   for (var i = 0; i < camaras.length; i++) {
     
-    if (i%2 == 0) {
-      divisao2.innerHTML += `<div class="camara">
-        <span>Câmara ${i+1}</span>
-        <a href="Câmaras/Câmara 2.html"><img src="assets/imagensdash/container (3).png" alt=""></a>
-      </div>`  
-    } else {
-      divisao1.innerHTML += `<div class="camara">
-        <span>Câmara ${i+1}</span>
-        <a href="Câmaras/Câmara 2.html"><img src="assets/imagensdash/container (3).png" alt=""></a>
-      </div>`
-    }
+//     if (i%2 == 0) {
+//       divisao2.innerHTML += `<div class="camara">
+//         <span>Câmara ${i+1}</span>
+//         <a href="Câmaras/Câmara 2.html"><img src="assets/imagensdash/container (3).png" alt=""></a>
+//       </div>`  
+//     } else {
+//       divisao1.innerHTML += `<div class="camara">
+//         <span>Câmara ${i+1}</span>
+//         <a href="Câmaras/Câmara 2.html"><img src="assets/imagensdash/container (3).png" alt=""></a>
+//       </div>`
+//     }
 
-  }
-  document.querySelector('.kpi1 .digital h2').textContent = `${camaras.length} Câmaras`;
-}
+//   }
+//   document.querySelector('.kpi1 .digital h2').textContent = `${camaras.length} Câmaras`;
+// }
 
 /* document.querySelector('.kpi2 .digital h2').textContent = `${totalCamarasControladas} Câmaras`;
 document.querySelector('.kpi3 .digital h2').textContent = `${totalCamarasInstaveis} Câmaras`;
