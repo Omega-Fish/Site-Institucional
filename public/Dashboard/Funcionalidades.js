@@ -216,15 +216,15 @@ function mostrarCamaras(dadosCamaras) {
   }
   
   if (idCamaraCaminhao%2 == 0) {
-    divisao1.innerHTML += `<div class="camara">
+    divisao1.innerHTML += `<div onclick="ExibirDetalhes(${idCamaraCaminhao})" class="camara">
       <span>Câmara ${camaraCaminhao}</span>
-      <a href="Câmaras/Câmara 2.html"><img src="assets/imagensdash/container (${estadoCamaraCaminhao}).png" alt=""></a>
+      <img src="assets/imagensdash/container (${estadoCamaraCaminhao}).png" alt="">
     </div>`
     camaraCaminhao++
   } else {
-    divisao2.innerHTML += `<div class="camara">
+    divisao2.innerHTML += `<div onclick="ExibirDetalhes(${idCamaraCaminhao})" class="camara">
       <span>Câmara ${camaraCaminhao}</span>
-      <a href="Câmaras/Câmara 2.html"><img src="assets/imagensdash/container (3).png" alt=""></a>
+      <img src="assets/imagensdash/container (3).png" alt="">
     </div>`
     camaraCaminhao++
   }
@@ -235,6 +235,11 @@ function mostrarCamaras(dadosCamaras) {
   document.querySelector('.kpi4 .digital h2').textContent = `${camarasCriticas} Câmaras`;
 
   mostrarNome()
+}
+
+function ExibirDetalhes(idCamara) {
+  sessionStorage.setItem('idCamara', idCamara)
+  window.open("./Câmaras/Câmara.html", "_self")
 }
 
 buscarCamaras()

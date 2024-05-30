@@ -1,11 +1,8 @@
 // Gráficos 
 
 // Renderiza os gráficos quando a página carrega
-document.addEventListener('DOMContentLoaded', function () {
-    renderChart1(); renderChart4();
-  });
-  
-  
+  window.onload = buscarDados()
+
   // Função para abrir a aba - Temp
   function openTab(evt, tabName) {
     var i, tabcontent, tablinks, tablinks2;
@@ -74,15 +71,71 @@ document.addEventListener('DOMContentLoaded', function () {
   
   Chart.defaults.color = '#fff'
   // Primeiro Gráfico - Temperatura
-  function renderChart1() {
+    function buscarDados() {
+        var idCamara = sessionStorage.getItem("idCamara")
+
+        fetch(`http://localhost:3333/medidas/tempo-real/${idCamara}`).then(res => {
+            res.json().then(response => {
+                tratarDadosTempReal(response)
+            })
+        })
+
+        fetch(`http://localhost:3333/medidas/ultimaHora/${idCamara}`).then(res => {
+            res.json().then(response => {
+                tratarDadosTempHora(response)
+            })
+        })
+
+        fetch(`http://localhost:3333/medidas/ultimoDia/${idCamara}`).then(res => {
+            res.json().then(response => {
+                tratarDadosTempDia(response)
+            })
+        })
+
+    }
+
+    function tratarDadosTempReal(dados) {
+        var lista_temp = []
+        var lista_tempHoraColeta = []
+
+        for (var i = 0; i < dados.length; i++) {
+            lista_temp.push(dados[i].SensorTemp)
+            lista_tempHoraColeta.push(dados[i].HoraColeta)
+        }
+        renderChart1(lista_temp, lista_tempHoraColeta)
+    }
+
+    function tratarDadosTempHora(dados) {
+        var lista_temp = []
+        var lista_tempHoraColeta = []
+
+        for (var i = 0; i < dados.length; i++) {
+            lista_temp.push(dados[i].SensorTemp)
+            lista_tempHoraColeta.push(dados[i].HoraColeta)
+        }
+        renderChart2(lista_temp, lista_tempHoraColeta)
+    }
+
+    function tratarDadosTempDia(dados) {
+        var lista_temp = []
+        var lista_tempHoraColeta = []
+
+        for (var i = 0; i < dados.length; i++) {
+            lista_temp.push(dados[i].SensorTemp)
+            lista_tempHoraColeta.push(dados[i].HoraColeta)
+        }
+        renderChart3(lista_temp, lista_tempHoraColeta)
+    }
+
+  function renderChart1(lista_temp, lista_tempHoraColeta) {
     var ctx1 = document.getElementById('Temp_TempoReal').getContext('2d');
     var Temp_TempoReal = new Chart(ctx1, {
         type: 'line',
         data: {
-            labels: ['0', '2', '4', '6', '8', '10'],
+            labels: lista_tempHoraColeta,
             datasets: [{
                 label: 'Temperatura',
-                data: [0.3, 0.6, 1, 0.8, 0.3, 0.5],
+                data: lista_temp,
                 borderColor: 'rgb(0, 195, 255)',
                 backgroundcolor: 'rgb(13, 14, 43)',
                 color: 'rgb(255, 255, 255)',
@@ -115,16 +168,16 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   
   // Segundo Gráfico - Temperatura
-  function renderChart2() {
+  function renderChart2(lista_temp, lista_tempHoraColeta) {
     var ctx2 = document.getElementById('Temp_Semana').getContext('2d');
     var Temp_Semana = new Chart(ctx2, {
         type: 'line',
         data: {
   
-            labels: ['8', '16', '24', '32', '40', '48', '56', '60'],
+            labels: lista_tempHoraColeta,
             datasets: [{
                 label: 'Temperatura',
-                data: [0.3, 0.6, 1, 0.8, 1.3, 1.1, 0.8, 1.0],
+                data: lista_temp,
                 borderColor: 'rgb(0, 195, 255)',
                 backgroundcolor: 'rgb(13, 14, 43)',
                 lineTension: 0.3
@@ -157,16 +210,16 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   
   // Terceiro Gráfico - Temperatura
-  function renderChart3() {
+  function renderChart3(lista_temp, lista_tempHoraColeta) {
     var ctx3 = document.getElementById('Temp_Mes').getContext('2d');
     var Temp_Mes = new Chart(ctx3, {
         type: 'line',
         data: {
   
-            labels: ['3h', '6h', '9h', '12h', '15h', '18h', '21h', '00h',],
+            labels: lista_tempHoraColeta,
             datasets: [{
                 label: 'Temperatura',
-                data: [0.5, 0.6, 1, 0.8, 0.6, 0.2, 0, 1],
+                data: lista_temp,
                 borderColor: 'rgb(0, 195, 255)',
                 backgroundcolor: 'rgb(13, 14, 43)',
                 lineTension: 0.3
@@ -323,4 +376,3 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
   }
-  
