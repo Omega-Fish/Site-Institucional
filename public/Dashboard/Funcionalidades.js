@@ -167,35 +167,59 @@ if (status_temperatura > status_umidade) {
     status_geral = status_umidade;
 }
 
-window.onload = buscarCamaras()
-
+// window.onload = buscarCamaras()
+var lista_dadosCamaras = []
 function buscarCamaras() {
   fetch("http://localhost:3333/camaras/2").then(res => {
     res.json().then(response => {
-      console.log(response)
+      for (var i = 0; i < response.length; i++) {
+        buscarDadosCamaras(response[i])
+      }
+    })
+  })
+}
+
+function buscarDadosCamaras(camara) {
+  fetch(`http://localhost:3333/camaras/${camara.idCamaraCaminhao}/dados`).then(res => {
+    res.json().then(response => {
       mostrarCamaras(response)
     })
   })
 }
 
-function mostrarCamaras(camaras) {
-  for (var i = 0; i < camaras.length; i++) {
-    
-    if (i%2 == 0) {
-      divisao2.innerHTML += `<div class="camara">
-        <span>Câmara ${i+1}</span>
-        <a href="Câmaras/Câmara 2.html"><img src="assets/imagensdash/container (3).png" alt=""></a>
-      </div>`  
-    } else {
-      divisao1.innerHTML += `<div class="camara">
-        <span>Câmara ${i+1}</span>
-        <a href="Câmaras/Câmara 2.html"><img src="assets/imagensdash/container (3).png" alt=""></a>
-      </div>`
-    }
+var camaraCaminhao = 1;
+function mostrarCamaras(dadosCamaras) {
+  var idCamaraCaminhao = dadosCamaras[0].idCamaraCaminhao;
+  var tempCamaraCaminhao = dadosCamaras[0].SensorTemp;
+  var umidCamaraCaminhao = dadosCamaras[0].SensorUmid;
 
+  var estadoCamaraCaminhao = 0;
+
+  if ((tempCamaraCaminhao >= 0 && tempCamaraCaminhao <= 2) && (umidCamaraCaminhao <= 100 && umidCamaraCaminhao >= 50)) {
+    estadoCamaraCaminhao = 1
+  } else if((tempCamaraCaminhao >= 2 && tempCamaraCaminhao <= 4) || (umidCamaraCaminhao <= 50 && umidCamaraCaminhao >= 40)) {
+    estadoCamaraCaminhao = 2
+  } else {
+    estadoCamaraCaminhao = 3
   }
-  document.querySelector('.kpi1 .digital h2').textContent = `${camaras.length} Câmaras`;
+  
+  if (idCamaraCaminhao%2 == 0) {
+    divisao1.innerHTML += `<div class="camara">
+      <span>Câmara ${camaraCaminhao}</span>
+      <a href="Câmaras/Câmara 2.html"><img src="assets/imagensdash/container (${estadoCamaraCaminhao}).png" alt=""></a>
+    </div>`
+    camaraCaminhao++
+  } else {
+    divisao2.innerHTML += `<div class="camara">
+      <span>Câmara ${camaraCaminhao}</span>
+      <a href="Câmaras/Câmara 2.html"><img src="assets/imagensdash/container (3).png" alt=""></a>
+    </div>`
+    camaraCaminhao++
+  }
+  // document.querySelector('.kpi1 .digital h2').textContent = `${camaras.length} Câmaras`;
 }
+
+buscarCamaras()
 
 /* document.querySelector('.kpi2 .digital h2').textContent = `${totalCamarasControladas} Câmaras`;
 document.querySelector('.kpi3 .digital h2').textContent = `${totalCamarasInstaveis} Câmaras`;
