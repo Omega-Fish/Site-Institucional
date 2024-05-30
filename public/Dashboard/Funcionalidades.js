@@ -167,6 +167,11 @@ if (status_temperatura > status_umidade) {
     status_geral = status_umidade;
 }
 
+function mostrarNome() {
+  var nome = sessionStorage.getItem("NOME_USUARIO");
+  document.querySelector('.header-end h3').textContent = nome
+}
+
 var lista_dadosCamaras = []
 function buscarCamaras() {
   fetch("http://localhost:3333/camaras/2").then(res => {
@@ -187,7 +192,12 @@ function buscarDadosCamaras(camara) {
 }
 
 var camaraCaminhao = 1;
+var camarasTotal = 0;
+var camarasControladas = 0;
+var camarasInstaveis = 0;
+var camarasCriticas = 0;
 function mostrarCamaras(dadosCamaras) {
+  camarasTotal++
   var idCamaraCaminhao = dadosCamaras[0].idCamaraCaminhao;
   var tempCamaraCaminhao = dadosCamaras[0].SensorTemp;
   var umidCamaraCaminhao = dadosCamaras[0].SensorUmid;
@@ -196,10 +206,13 @@ function mostrarCamaras(dadosCamaras) {
 
   if ((tempCamaraCaminhao >= 0 && tempCamaraCaminhao <= 2) && (umidCamaraCaminhao <= 100 && umidCamaraCaminhao >= 50)) {
     estadoCamaraCaminhao = 1
+    camarasControladas++
   } else if((tempCamaraCaminhao >= 2 && tempCamaraCaminhao <= 4) || (umidCamaraCaminhao <= 50 && umidCamaraCaminhao >= 40)) {
     estadoCamaraCaminhao = 2
+    camarasInstaveis++
   } else {
     estadoCamaraCaminhao = 3
+    camarasCriticas++
   }
   
   if (idCamaraCaminhao%2 == 0) {
@@ -215,11 +228,13 @@ function mostrarCamaras(dadosCamaras) {
     </div>`
     camaraCaminhao++
   }
-  // document.querySelector('.kpi1 .digital h2').textContent = `${camaras.length} Câmaras`;
+  
+  document.querySelector('.kpi1 .digital h2').textContent = `${camarasTotal} Câmaras`;
+  document.querySelector('.kpi2 .digital h2').textContent = `${camarasControladas} Câmaras`;
+  document.querySelector('.kpi3 .digital h2').textContent = `${camarasInstaveis} Câmaras`;
+  document.querySelector('.kpi4 .digital h2').textContent = `${camarasCriticas} Câmaras`;
+
+  mostrarNome()
 }
 
 buscarCamaras()
-
-/* document.querySelector('.kpi2 .digital h2').textContent = `${totalCamarasControladas} Câmaras`;
-document.querySelector('.kpi3 .digital h2').textContent = `${totalCamarasInstaveis} Câmaras`;
-document.querySelector('.kpi4 .digital h2').textContent = `${totalCamarasEmergencia} Câmaras`; */
