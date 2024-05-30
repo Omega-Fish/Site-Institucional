@@ -167,7 +167,6 @@ if (status_temperatura > status_umidade) {
     status_geral = status_umidade;
 }
 
-// window.onload = buscarCamaras()
 var lista_dadosCamaras = []
 function buscarCamaras() {
   fetch("http://localhost:3333/camaras/2").then(res => {
