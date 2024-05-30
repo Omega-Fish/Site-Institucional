@@ -1,35 +1,45 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idAquario, limite_linhas) {
+function buscarMedidasEmTempoReal(idCamara) {
 
-    var instrucaoSql = `SELECT 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        momento,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-                    FROM medida
-                    WHERE fk_aquario = ${idAquario}
-                    ORDER BY id DESC LIMIT ${limite_linhas}`;
+    var instrucaoSql = `
+        select SensorTemp, SensorUmid, Date_format(HoraColeta, "%T") as HoraColeta from CamaraCaminhao join Sensor
+        on idCamaraCaminhao = fkCamaraCaminhao
+        join Dados
+        on idSensor = fkSensor
+        where idCamaraCaminhao = ${idCamara} limit 6;
+    `;
 
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idAquario) {
+function buscarMedidasUltimaHora(idCamara) {
 
-    var instrucaoSql = `SELECT 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
-                        fk_aquario 
-                        FROM medida WHERE fk_aquario = ${idAquario} 
-                    ORDER BY id DESC LIMIT 1`;
+    var instrucaoSql = `
+        select SensorTemp, SensorUmid, Date_format(HoraColeta, "%i") as HoraColeta from CamaraCaminhao join Sensor
+        on idCamaraCaminhao = fkCamaraCaminhao
+        join Dados
+        on idSensor = fkSensor
+        where idCamaraCaminhao = ${idCamara} and HoraColeta > DATE_SUB(current_time(), INTERVAL 1 HOUR);
+    `;
 
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarMedidasUltimoDia(idCamara) {
+
+    var instrucaoSql = `
+        select SensorTemp, SensorUmid, Date_format(HoraColeta, "%H") as HoraColeta from CamaraCaminhao join Sensor
+        on idCamaraCaminhao = fkCamaraCaminhao
+        join Dados
+        on idSensor = fkSensor
+        where idCamaraCaminhao = ${idCamara} and HoraColeta > DATE_SUB(current_date(), INTERVAL 1 DAY);
+    `;
     return database.executar(instrucaoSql);
 }
 
 module.exports = {
-    buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    buscarMedidasEmTempoReal,
+    buscarMedidasUltimaHora,
+    buscarMedidasUltimoDia
 }
