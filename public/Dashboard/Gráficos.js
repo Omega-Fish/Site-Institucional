@@ -75,7 +75,7 @@ function tratarDadosTempReal(dados) {
   var lista_temp = [];
   var lista_tempHoraColeta = [];
 
-  for (var i = 0; i < dados.length; i++) {
+  for (var i = dados.length - 1; i >= 0; i--) {
     lista_temp.push(dados[i].SensorTemp);
     lista_tempHoraColeta.push(dados[i].HoraColeta);
   }
@@ -108,7 +108,7 @@ function tratarDadosUmidReal(dados) {
   var lista_umid = [];
   var lista_umidHoraColeta = [];
 
-  for (var i = 0; i < dados.length; i++) {
+  for (var i = dados.length - 1; i >= 0; i--) {
     lista_umid.push(dados[i].SensorUmid);
     lista_umidHoraColeta.push(dados[i].HoraColeta);
   }
@@ -287,8 +287,8 @@ function renderChart4(lista_umid, lista_umidHoraColeta) {
     options: {
       scales: {
         y: {
-          min: 51, // Define o limite mínimo do eixo y
-          max: 55, // Define o limite máximo do eixo y
+          min: 0, // Define o limite mínimo do eixo y
+          max: 100, // Define o limite máximo do eixo y
           ticks: {
             count: 5, // Defina o número desejado de labels no eixo y
             callback: function (value, index, values) {
