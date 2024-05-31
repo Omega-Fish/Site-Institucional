@@ -35,8 +35,20 @@ function buscarMedidasUltimoDia(idCamara) {
   return database.executar(instrucaoSql);
 }
 
+function buscarMedidasMes(idCamara) {
+  var instrucaoSql = `
+    select truncate(avg(SensorTemp), 1) as SensorTemp, truncate(avg(SensorUmid), 1) as SensorUmid, Date_format(HoraColeta, "%b") as HoraColeta from CamaraCaminhao join Sensor
+    on idCamaraCaminhao = fkCamaraCaminhao
+    join Dados
+    on idSensor = fkSensor
+    where idCamaraCaminhao = ${idCamara} group by 3;
+  `;
+  return database.executar(instrucaoSql);
+}
+
 module.exports = {
   buscarMedidasEmTempoReal,
   buscarMedidasUltimaHora,
   buscarMedidasUltimoDia,
+  buscarMedidasMes,
 };
