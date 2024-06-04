@@ -7,6 +7,10 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="../style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+
     <link rel="icon" href="../Assets/Imagens/favicon.ico" type="image/x-icon">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
@@ -181,12 +185,11 @@
                                 <div class="chartBox">
                                     <div class="titulo">
                                         <h1>Medidor de Atividades <spans style="color: #00C3FF;">Críticas</spans></h1>
-                                        <h1>Temperatura</h1>
                                     </div>
                                         
 
-                                  <canvas id="myChart"></canvas>
-                                  <div class="titulo_chart">
+                                    <div id="container"></div>
+                                    <div class="titulo_chart">
                                     <h3 id="id_status_temperatura"></h3>
                                 </div>
                                 <div class="descricao_chart">
@@ -209,9 +212,10 @@
                                 <div class="chartBox">
                                     <div class="titulo">
                                         <h1>Medidor de Atividades <span style="color: #00C3FF;">Críticas</span></h1>
-                                        <h1>Umidade</h1>
                                     </div>
-                                  <canvas id="myChart2"></canvas>
+
+
+                                  <div id="container2"></div>
                                   <div class="titulo_chart">
                                     <h3 id="id_status_umidade"></h3>
                                 </div>
@@ -401,19 +405,19 @@
                 montarGauge(temperatura, umidade)
 
                 if(temperatura <= 2) {
-                    id_status_temperatura.innerHTML = `<h4 style="color:#03F44E">Controlado</h4>`
+                    id_status_temperatura.innerHTML = `<h4 style="color:#03F44E; margin-top: 45px;">Controlado</h4>`
                 } else if(temperatura <= 4) {
-                    id_status_temperatura.innerHTML = `<h4 style="color:yellow">Instável</h4>`
+                    id_status_temperatura.innerHTML = `<h4 style="color:yellow; margin-top: 45px;">Instável</h4>`
                 } else {
-                    id_status_temperatura.innerHTML = `<h4 style="color:red">Emergência</h4>`
+                    id_status_temperatura.innerHTML = `<h4 style="color:red; margin-top: 45px;">Emergência</h4>`
                 }
 
                 if(umidade >= 50) {
-                    id_status_umidade.innerHTML = `<h4 style="color:#03F44E">Controlado</h4>`
+                    id_status_umidade.innerHTML = `<h4 style="color:#03F44E; margin-top: 45px;">Controlado</h4>`
                 } else if(umidade >= 40) {
-                    id_status_umidade.innerHTML = `<h4 style="color:yellow">Instável</h4>`
+                    id_status_umidade.innerHTML = `<h4 style="color:yellow; margin-top: 45px;">Instável</h4>`
                 } else {
-                    id_status_umidade.innerHTML = `<h4 style="color:red">Emergência</h4>`
+                    id_status_umidade.innerHTML = `<h4 style="color:red; margin-top: 45px;">Emergência</h4>`
                 }
 
             });
@@ -424,251 +428,219 @@
     function montarGauge(temperatura, umidade) {
 
         // fazer calculo para linkar o grafico de ponteiro
-        /* if(temperatura <= 2) {
-            id_status_temperatura.innerHTML = `<h4 style="color:#03F44E">Controlado</h4>`
-        } else if(temperatura <= 4) {
-            id_status_temperatura.innerHTML = `<h4 style="color:yellow">Instável</h4>`
+        if(temperatura >= 0 && temperatura <= 2) {
+           temperatura *= 45
+        } else if(temperatura > 2 && temperatura <= 4) {
+            temperatura *= 37
+        } else if(temperatura > 4 && temperatura <= 6) {
+            temperatura *= 30
         } else {
-            id_status_temperatura.innerHTML = `<h4 style="color:red">Emergência</h4>`
+            temperatura *= 26
         }
 
-        if(umidade >= 50) {
-            id_status_umidade.innerHTML = `<h4 style="color:#03F44E">Controlado</h4>`
-        } else if(umidade >= 40) {
-            id_status_umidade.innerHTML = `<h4 style="color:yellow">Instável</h4>`
+        /* if(umidade >= 0 && umidade <= 40) {
+           temperatura *= 17.5
+        } else if(umidade > 40 && umidade < 50) {
+           
         } else {
-            id_status_umidade.innerHTML = `<h4 style="color:red">Emergência</h4>`
-        }
-        temperatura_gauge = 30 */
+           
+        } */
 
+        Highcharts.chart('container', {
 
-        // setup
-        const data = {
-            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-            datasets: [{
-                label: 'Weekly Sales',
-                data: [15, 15, 15, 15, 15, 15, 15],
-                backgroundColor: [
-                    '#03F44E', //verde
-                    '#03F44E', //verde
-                    '#03F44E', //verde
-                    'rgba(255, 255, 0)', //amarelo
-                    'rgba(255, 255, 0)', //amarelo
-                    'rgba(255, 0, 0)', //vermelho
-                    'rgba(255, 0, 0)', //vermelho
-                ],
-                borderColor: ['rgba(0, 0, 0)'],
-                borderWidth: 1,
-                circumference: 180,
-                rotation: 270,
-                cutout: '80%',
-                needleValue: temperatura_gauge
-            }]
-        };
-
-        const gaugeNeedle = {
-            id: 'gaugeNeedle',
-            afterDatasetsDraw(chart, args, plugins) {
-                const { ctx, data } = chart;
-
-                ctx.save();
-                const xCenter = chart.getDatasetMeta(0).data[0].x;
-                const yCenter = chart.getDatasetMeta(0).data[0].y;
-                const outerRadius = chart.getDatasetMeta(0).data[0].outerRadius;
-                const innerRadius = chart.getDatasetMeta(0).data[0].innerRadius;
-                const widthSlice = (outerRadius - innerRadius) / 2;
-                const radius = outerRadius / 10; // Ajuste o tamanho do ponteiro aqui (por exemplo, 1/10 do raio externo)
-                const angle = Math.PI / 180
-
-                const needleValue = data.datasets[0].needleValue;
-
-                const dataTotal = data.datasets[0].data.reduce((a, b) => a + b, 0);
-
-                const circumference = ((chart.getDatasetMeta(0).data[0].circumference / Math.PI) / data.datasets[0].data[0]) * needleValue;
-
-                ctx.translate(xCenter, yCenter);
-                ctx.rotate(Math.PI * (circumference + 1.5)); // MIN: 1.32 - MAX: 2.32
-
-                ctx.beginPath();
-
-                ctx.strokeStyle = 'black';
-                ctx.fillStyle = 'grey'
-                ctx.lineWidth = 1;
-
-
-                ctx.moveTo(0 - radius, 0);
-                ctx.lineTo(0, 0 - innerRadius - widthSlice);
-                ctx.lineTo(0 + radius, 0);
-
-                ctx.closePath();
-                ctx.stroke();
-                ctx.fill();
-
-                //círculo no meio
-
-                ctx.beginPath();
-                ctx.arc(0, 0, radius, 0, angle * 360, false);
-                ctx.fill();
-                ctx.restore();
-            }
-        }
-        // gaugeFlowMeter plugin block
-        const gaugeFlowMeter = {
-            id: 'gaugeFlowMeter',
-            afterDatasetsDraw(chart, args, plugins) {
-                const { ctx, data } = chart;
-
-                ctx.save();
-                const needleValue = data.datasets[0].needleValue;
-                const xCenter = chart.getDatasetMeta(0).data[0].x;
-                const yCenter = chart.getDatasetMeta(0).data[0].y;
-
-                const circumference = ((chart.getDatasetMeta(0).data[0].circumference / Math.PI) / data.datasets[0].data[0]) * needleValue;
-                const percentageValue = circumference * 100;
-
-                // flowMeter
-                ctx.font = 'bold 30px sans-serif';
-                ctx.fillStyle = 'grey';
-                ctx.textAlign = 'center';
-                ctx.fillText(`${percentageValue.toFixed(1)}%`, xCenter, yCenter + 45);
-
-            }
-        }
-        // config 
-        const config = {
-            type: 'doughnut',
-            data,
-            options: {
-                layout: {
-                    padding: {
-                        bottom: 50
-                    }
-                },
-                aspectRatio: 1.7,
-                plugins: {
-                    legend: {
-                        display: false
-                    },
-                    tooltip: {
-                        enabled: false
-                    }
-                }
+            credits: {
+                enabled: false
             },
-            plugins: [gaugeNeedle]
-        };
 
-        // render init block
-        const myChart = new Chart(
-            document.getElementById('myChart'),
-            config
-        );
-        
-        function createGaugeChart2(canvasId, needleValue2) {
-            const data2 = {
-                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                datasets: [{
-                    label: 'Weekly Sales',
-                    data: [15, 15, 15, 15, 15, 15, 15],
-                    backgroundColor: [
-                        '#03F44E',
-                        '#03F44E',
-                        '#03F44E',
-                        'rgba(255, 255, 0)',
-                        'rgba(255, 255, 0)',
-                        'rgba(255, 0, 0)',
-                        'rgba(255, 0, 0)',
-                    ],
-                    borderColor: [
-                        'rgba(0, 0, 0)',
-                        'rgba(0, 0, 0)',
-                        'rgba(0, 0, 0)',
-                        'rgba(0, 0, 0)',
-                        'rgba(0, 0, 0)',
-                    ],
-                    borderWidth: 1,
-                    circumference: 180,
-                    rotation: 270,
-                    cutout: '80%',
-                    needleValue: umidade_gauge
+            chart: {
+                backgroundColor: null,
+                type: 'gauge',
+                plotBackgroundImage: null,
+                plotBorderWidth: 0,
+                plotShadow: false,
+                height: '80%'
+            },
+
+            title: {
+                style: {
+                    color: '#FFFFFF',
+                },
+                text: 'Temperatura',
+            },
+            pane: {
+                startAngle: -90,
+                endAngle: 89.9,
+                background: null,
+                center: ['50%', '75%'],
+                size: '150%'
+            },
+
+            // the value axis
+            yAxis: {
+                min: 0,
+                max: 210,
+                tickInterval: 52,
+                tickPosition: 'inside',
+                tickColor: '#000000',
+                tickLength: 20,
+                tickWidth: 1,
+                tickPositions: [0, 30, 60, 90, 120, 150, 180, 210],
+                minorTickInterval: null,
+                width: '20px',
+                labels: {
+                    enabled: false,
+                },
+                lineWidth: 0,
+                plotBands: [{
+                    from: 0,
+                    to: 90,
+                    color: '#03F44E', // green
+                    thickness: 13
+                }, {
+                    from: 150,
+                    to: 210,
+                    color: '#FF0000', // red
+                    thickness: 13
+                }, {
+                    from: 90,
+                    to: 150,
+                    color: '#FFFF00', // yellow
+                    thickness: 13
                 }]
-            };
+            },
 
-            const gaugeNeedle2 = {
-                id: 'gaugeNeedle2',
-                afterDatasetsDraw(chart, args, plugins) {
-                    const { ctx, data } = chart;
-
-                    ctx.save();
-                    const xCenter = chart.getDatasetMeta(0).data[0].x;
-                    const yCenter = chart.getDatasetMeta(0).data[0].y;
-                    const outerRadius = chart.getDatasetMeta(0).data[0].outerRadius;
-                    const innerRadius = chart.getDatasetMeta(0).data[0].innerRadius;
-                    const widthSlice = (outerRadius - innerRadius) / 2;
-                    const radius = outerRadius / 10;
-                    const angle = Math.PI / 180
-
-                    const needleValue = data.datasets[0].needleValue;
-
-                    const dataTotal = data.datasets[0].data.reduce((a, b) => a + b, 0);
-
-                    const circumference = ((chart.getDatasetMeta(0).data[0].circumference / Math.PI) / data.datasets[0].data[0]) * needleValue;
-
-                    ctx.translate(xCenter, yCenter);
-                    ctx.rotate(Math.PI * (circumference + 1.5));
-
-                    ctx.beginPath();
-
-                    ctx.strokeStyle = 'black';
-                    ctx.fillStyle = 'grey'
-                    ctx.lineWidth = 1;
-
-
-                    ctx.moveTo(0 - radius, 0);
-                    ctx.lineTo(0, 0 - innerRadius - widthSlice);
-                    ctx.lineTo(0 + radius, 0);
-
-                    ctx.closePath();
-                    ctx.stroke();
-                    ctx.fill();
-
-                    ctx.beginPath();
-                    ctx.arc(0, 0, radius, 0, angle * 360, false);
-                    ctx.fill();
-                    ctx.restore();
-                }
-            };
-
-            const config2 = {
-                type: 'doughnut',
-                data: data2,
-                options: {
-                    layout: {
-                        padding: {
-                            bottom: 50
-                        }
-                    },
-                    aspectRatio: 1.7,
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        tooltip: {
-                            enabled: false
-                        }
+            series: [{
+                name: 'Speed',
+                data: [temperatura],
+                tooltip: {
+                    valueSuffix: ' km/h'
+                },
+                dataLabels: {
+                    format: '',
+                    borderWidth: 0,
+                    color: (
+                        Highcharts.defaultOptions.title &&
+                        Highcharts.defaultOptions.title.style &&
+                        Highcharts.defaultOptions.title.style.color
+                    ) || '#333333',
+                    style: {
+                        fontSize: '16px'
                     }
                 },
-                plugins: [gaugeNeedle2]
-            };
+                dial: {
+                    radius: '80%',
+                    backgroundColor: 'gray',
+                    baseWidth: 12,
+                    baseLength: '0%',
+                    rearLength: '0%'
+                },
+                pivot: {
+                    backgroundColor: 'gray',
+                    radius: 6
+                }
 
-            return new Chart(
-                document.getElementById(canvasId),
-                config2
-            );
-        }
+            }]
 
-        const myChart22 = createGaugeChart2('myChart2');
-        
-    }
+        });
+
+        Highcharts.chart('container2', {
+
+            credits: {
+                enabled: false
+            },
+
+            chart: {
+                backgroundColor: null,
+                type: 'gauge',
+                plotBackgroundImage: null,
+                plotBorderWidth: 0,
+                plotShadow: false,
+                height: '80%'
+            },
+
+            title: {
+                style: {
+                    color: '#FFFFFF',
+                },
+                text: 'Umidade',
+            },
+            pane: {
+                startAngle: -90,
+                endAngle: 89.9,
+                background: null,
+                center: ['50%', '75%'],
+                size: '150%'
+            },
+
+            // the value axis
+            yAxis: {
+                min: 0,
+                max: 210,
+                tickInterval: 52,
+                tickPosition: 'inside',
+                tickColor: '#000000',
+                tickLength: 20,
+                tickWidth: 1,
+                tickPositions: [0, 30, 60, 90, 120, 150, 180, 210],
+                minorTickInterval: null,
+                width: '20px',
+                labels: {
+                    enabled: false,
+                },
+                lineWidth: 0,
+                plotBands: [{
+                    from: 0,
+                    to: 90,
+                    color: '#03F44E', // green
+                    thickness: 13
+                }, {
+                    from: 150,
+                    to: 210,
+                    color: '#FF0000', // red
+                    thickness: 13
+                }, {
+                    from: 90,
+                    to: 150,
+                    color: '#FFFF00', // yellow
+                    thickness: 13
+                }]
+            },
+
+            series: [{
+                name: 'Speed',
+                data: [210],
+                tooltip: {
+                    valueSuffix: ' km/h'
+                },
+                dataLabels: {
+                    format: '',
+                    borderWidth: 0,
+                    color: (
+                        Highcharts.defaultOptions.title &&
+                        Highcharts.defaultOptions.title.style &&
+                        Highcharts.defaultOptions.title.style.color
+                    ) || '#333333',
+                    style: {
+                        fontSize: '16px'
+                    }
+                },
+                dial: {
+                    radius: '80%',
+                    backgroundColor: 'gray',
+                    baseWidth: 12,
+                    baseLength: '0%',
+                    rearLength: '0%'
+                },
+                pivot: {
+                    backgroundColor: 'gray',
+                    radius: 6
+                }
+
+            }]
+
+        });
+
+    }   
 
     buscarDadosReal()
     buscarDadosMes()
