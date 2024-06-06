@@ -44,11 +44,11 @@
                 <li id="toggle" class="bx bx-list-ul toggle"></li>
                 <h3 style="white-space: nowrap;">Dashboard</h3>
                 <h3>-</h3>
-                <h3 style="white-space: nowrap;">Câmara 1</h3>
+                <h3 style="white-space: nowrap;" id="numCamara"></h3>
                 <div class="header-end">
 
                     <li onclick="AtivarDesativarFS()" class='bx bx-fullscreen'></li>
-                    <h3>Luana Oliveira</h3>
+                    <h3 id="nome_usuario">Luana Oliveira</h3>
                     
                 </div>
             </section>
@@ -220,14 +220,14 @@
                                     <h3 id="id_status_umidade"></h3>
                                 </div>
                                 <div class="descricao_chart">
-                                    <h5 style="color: #03F44E; ">&#x2B24; Controlado </h5>
-                                    <h5 style="color: yellow;">&#x2B24; Instável</h5>
                                     <h5 style="color: red;">&#x2B24; Emergência</h5>
+                                    <h5 style="color: yellow;">&#x2B24; Instável</h5>
+                                    <h5 style="color: #03F44E; ">&#x2B24; Controlado </h5>
                                 </div>
                                 <div class="legenda_chart2">
-                                    <h5 style="color: #03F44E;">100% ~ 50% </h5> 
-                                    <h5 style="color: yellow;"> 50% ~ 40% </h5> 
-                                    <h5 style="color: red;">40% ~ 0%</h5>
+                                    <h5 style="color: red;">0% ~ 40%</h5>
+                                    <h5 style="color: yellow;">40% ~ 50%</h5> 
+                                    <h5 style="color: #03F44E;">50% ~ 100%</h5> 
                                 </div>
                                 </div>
                             </div>
@@ -292,6 +292,13 @@
 </html>
 
 <script>
+
+    var nome = sessionStorage.getItem('NOME_USUARIO')
+    nome_usuario.innerHTML = nome
+
+    var camara = sessionStorage.getItem('camara')
+    numCamara.innerHTML = `Câmara ${camara}`
+    console.log(camara)
 
     //Variáveis de Controle
     var tempo = 5
@@ -438,13 +445,13 @@
             temperatura *= 26
         }
 
-        /* if(umidade >= 0 && umidade <= 40) {
-           temperatura *= 17.5
-        } else if(umidade > 40 && umidade < 50) {
-           
+        if(umidade >= 0 && umidade <= 40) {
+           umidade *= 1.5
+        } else if(umidade > 40 && umidade <= 60) {
+           umidade *= 2.4
         } else {
-           
-        } */
+           umidade *= 2.1
+        }
 
         Highcharts.chart('container', {
 
@@ -589,18 +596,18 @@
                 },
                 lineWidth: 0,
                 plotBands: [{
-                    from: 0,
-                    to: 90,
+                    from: 120,
+                    to: 210,
                     color: '#03F44E', // green
                     thickness: 13
                 }, {
-                    from: 150,
-                    to: 210,
+                    from: 0,
+                    to: 60,
                     color: '#FF0000', // red
                     thickness: 13
                 }, {
-                    from: 90,
-                    to: 150,
+                    from: 60,
+                    to: 120,
                     color: '#FFFF00', // yellow
                     thickness: 13
                 }]
@@ -608,7 +615,7 @@
 
             series: [{
                 name: 'Speed',
-                data: [210],
+                data: [umidade],
                 tooltip: {
                     valueSuffix: ' km/h'
                 },

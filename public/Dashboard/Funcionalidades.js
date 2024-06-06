@@ -123,18 +123,19 @@ function mostrarNome() {
 }
 
 var lista_dadosCamaras = [];
-function buscarCamaras() {
-  fetch("http://localhost:3333/camaras/2").then((res) => {
-    res.json().then((response) => {
+async function buscarCamaras() {
+  var idEmpresa = sessionStorage.getItem('ID_EMPRESA')
+  fetch(`http://localhost:3333/camaras/${idEmpresa}`).then((res) => {
+    res.json().then(async (response) => {
       for (var i = 0; i < response.length; i++) {
-        buscarDadosCamaras(response[i]);
+        await buscarDadosCamaras(response[i]);
       }
     });
   });
 }
 
-function buscarDadosCamaras(camara) {
-  fetch(`http://localhost:3333/camaras/${camara.idCamaraCaminhao}/dados`).then(
+async function buscarDadosCamaras(camara) {
+  await fetch(`http://localhost:3333/camaras/${camara.idCamaraCaminhao}/dados`).then(
     (res) => {
       res.json().then((response) => {
         mostrarCamaras(response);
@@ -176,15 +177,15 @@ function mostrarCamaras(dadosCamaras) {
   }
 
   if (idCamaraCaminhao % 2 == 0) {
-    divisao1.innerHTML += `<div onclick="ExibirDetalhes(${idCamaraCaminhao})" class="camara">
+    divisao1.innerHTML += `<div onclick="ExibirDetalhes(${idCamaraCaminhao}, ${camaraCaminhao})" class="camara">
       <span>Câmara ${camaraCaminhao}</span>
       <img src="assets/imagensdash/container (${estadoCamaraCaminhao}).png" alt="">
     </div>`;
     camaraCaminhao++;
   } else {
-    divisao2.innerHTML += `<div onclick="ExibirDetalhes(${idCamaraCaminhao})" class="camara">
+    divisao2.innerHTML += `<div onclick="ExibirDetalhes(${idCamaraCaminhao}, ${camaraCaminhao})" class="camara">
       <span>Câmara ${camaraCaminhao}</span>
-      <img src="assets/imagensdash/container (3).png" alt="">
+      <img src="assets/imagensdash/container (${estadoCamaraCaminhao}).png" alt="">
     </div>`;
     camaraCaminhao++;
   }
@@ -205,8 +206,9 @@ function mostrarCamaras(dadosCamaras) {
   mostrarNome();
 }
 
-function ExibirDetalhes(idCamara) {
+function ExibirDetalhes(idCamara, camaraCaminhao) {
   sessionStorage.setItem("idCamara", idCamara);
+  sessionStorage.setItem("camara", camaraCaminhao);
   window.open("./Câmaras/Câmara.html", "_self");
 }
 
