@@ -124,7 +124,7 @@ function mostrarNome() {
 
 var lista_dadosCamaras = [];
 async function buscarCamaras() {
-  var idEmpresa = sessionStorage.getItem('ID_EMPRESA')
+  var idEmpresa = sessionStorage.getItem("ID_EMPRESA");
   fetch(`http://localhost:3333/camaras/${idEmpresa}`).then((res) => {
     res.json().then(async (response) => {
       for (var i = 0; i < response.length; i++) {
@@ -135,13 +135,13 @@ async function buscarCamaras() {
 }
 
 async function buscarDadosCamaras(camara) {
-  await fetch(`http://localhost:3333/camaras/${camara.idCamaraCaminhao}/dados`).then(
-    (res) => {
-      res.json().then((response) => {
-        mostrarCamaras(response);
-      });
-    }
-  );
+  await fetch(
+    `http://localhost:3333/camaras/${camara.idCamaraCaminhao}/dados`
+  ).then((res) => {
+    res.json().then((response) => {
+      mostrarCamaras(response);
+    });
+  });
 }
 
 var camaraCaminhao = 1;
@@ -150,6 +150,7 @@ var camarasControladas = 0;
 var camarasInstaveis = 0;
 var camarasCriticas = 0;
 function mostrarCamaras(dadosCamaras) {
+  criarNotificacao(camaraCaminhao, dadosCamaras);
   camarasTotal++;
   var idCamaraCaminhao = dadosCamaras[0].idCamaraCaminhao;
   var tempCamaraCaminhao = dadosCamaras[0].SensorTemp;
@@ -204,6 +205,40 @@ function mostrarCamaras(dadosCamaras) {
   ).textContent = `${camarasCriticas} Câmaras`;
 
   mostrarNome();
+}
+
+function criarNotificacao(camaraCaminhao, dadosCamaras) {
+  var tempCamaraCaminhao = dadosCamaras[0].SensorTemp;
+  var umidCamaraCaminhao = dadosCamaras[0].SensorUmid;
+  var diaColeta = dadosCamaras[0].DiaColeta;
+  var horaColeta = dadosCamaras[0].HoraColeta;
+
+  if (
+    (tempCamaraCaminhao >= 2 && tempCamaraCaminhao <= 4) ||
+    (umidCamaraCaminhao <= 50 && umidCamaraCaminhao >= 40)
+  ) {
+    alertas.innerHTML += `
+      <div class="instavel">
+          <img src="assets/imagensdash/atencao.png">
+          <div>
+              <h4>Instabilidade - Câmara ${camaraCaminhao}</h4>
+              <p>Temperatura: ${tempCamaraCaminhao}°C, Umidade: ${umidCamaraCaminhao}%</p>
+              <p>Data: ${diaColeta} - ${horaColeta}</p>
+          </div>
+      </div>
+    `;
+  } else {
+    alertas.innerHTML += `
+      <div class="emergencia">
+          <img src="assets/imagensdash/alarm.png">
+          <div>
+              <h4>Emergência - Câmara ${camaraCaminhao}</h4>
+              <p>Temperatura: ${tempCamaraCaminhao}°C, Umidade: ${umidCamaraCaminhao}%</p>
+              <p>Data: ${diaColeta} - ${horaColeta}</p>
+          </div>
+      </div>
+    `;
+  }
 }
 
 function ExibirDetalhes(idCamara, camaraCaminhao) {

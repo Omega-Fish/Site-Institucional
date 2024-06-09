@@ -1,7 +1,6 @@
 var database = require("../database/config");
 
 function buscarCamarasPorEmpresa(empresaId) {
-
   var instrucaoSql = `
       select idCamaraCaminhao from CamaraCaminhao where fkEmpresa = ${empresaId};
     `;
@@ -9,9 +8,9 @@ function buscarCamarasPorEmpresa(empresaId) {
   return database.executar(instrucaoSql);
 }
 
-function buscarDadosCamaras(camaraId) { 
+function buscarDadosCamaras(camaraId) {
   var instrucaoSql = `
-    select idCamaraCaminhao, SensorTemp, SensorUmid from CamaraCaminhao join Sensor
+    select idCamaraCaminhao, SensorTemp, SensorUmid, Date_format(HoraColeta, "%d/%m/%Y") as DiaColeta, Date_format(HoraColeta, "%H:%i:%s") as HoraColeta from CamaraCaminhao join Sensor
     on idCamaraCaminhao = fkCamaraCaminhao
     join Dados
     on idSensor = fkSensor
@@ -23,5 +22,5 @@ function buscarDadosCamaras(camaraId) {
 
 module.exports = {
   buscarCamarasPorEmpresa,
-  buscarDadosCamaras
-}
+  buscarDadosCamaras,
+};
