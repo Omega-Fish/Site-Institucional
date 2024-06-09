@@ -137,8 +137,8 @@ async function buscarCamaras() {
 async function buscarDadosCamaras(camara) {
   await fetch(
     `http://localhost:3333/camaras/${camara.idCamaraCaminhao}/dados`
-  ).then((res) => {
-    res.json().then((response) => {
+  ).then(async (res) => {
+    await res.json().then((response) => {
       mostrarCamaras(response);
     });
   });
@@ -183,12 +183,14 @@ function mostrarCamaras(dadosCamaras) {
       <img src="assets/imagensdash/container (${estadoCamaraCaminhao}).png" alt="">
     </div>`;
     camaraCaminhao++;
+    setTimeout(async () => await mostrarPopup(camaraCaminhao, dadosCamaras));
   } else {
     divisao2.innerHTML += `<div onclick="ExibirDetalhes(${idCamaraCaminhao}, ${camaraCaminhao})" class="camara">
       <span>Câmara ${camaraCaminhao}</span>
       <img src="assets/imagensdash/container (${estadoCamaraCaminhao}).png" alt="">
     </div>`;
     camaraCaminhao++;
+    setTimeout(async () => await mostrarPopup(camaraCaminhao, dadosCamaras));
   }
 
   document.querySelector(
@@ -207,6 +209,35 @@ function mostrarCamaras(dadosCamaras) {
   mostrarNome();
 }
 
+async function mostrarPopup(camaraCaminhao, dadosCamaras) {
+  var ultimoDado = dadosCamaras[0];
+
+  var temp = ultimoDado.SensorTemp;
+  var umid = ultimoDado.SensorUmid;
+
+  if ((temp >= 2 && temp <= 4) || (umid <= 50 && umid >= 40)) {
+    popup_alerta.classList.add("popup_instavel");
+    popup_alerta.innerHTML = `
+      <img src="assets/imagensdash/atencao.png">
+      <p>Instabilidade - Câmara ${camaraCaminhao - 1}</p>
+    `;
+    popup_alerta.style.display = "flex";
+
+    setTimeout(() => (popup_alerta.style.right = 0), 1000);
+    setTimeout(() => (popup_alerta.style.right = "200px"), 4500);
+  } else {
+    popup_alerta.classList.add("popup_emergencia");
+    popup_alerta.innerHTML = `
+      <img src="assets/imagensdash/alarm.png">
+      <p>Emergencia - Câmara ${camaraCaminhao - 1}</p>
+    `;
+    popup_alerta.style.display = "flex";
+
+    setTimeout(() => (popup_alerta.style.right = 0), 1000);
+    setTimeout(() => (popup_alerta.style.right = "200px"), 4500);
+  }
+}
+
 function criarNotificacao(camaraCaminhao, dadosCamaras) {
   var tempCamaraCaminhao = dadosCamaras[0].SensorTemp;
   var umidCamaraCaminhao = dadosCamaras[0].SensorUmid;
@@ -219,7 +250,7 @@ function criarNotificacao(camaraCaminhao, dadosCamaras) {
   ) {
     alertas.innerHTML += `
       <div class="instavel">
-          <img src="assets/imagensdash/atencao.png">
+          <img id="img_popup" src="assets/imagensdash/atencao.png">
           <div>
               <h4>Instabilidade - Câmara ${camaraCaminhao}</h4>
               <p>Temperatura: ${tempCamaraCaminhao}°C, Umidade: ${umidCamaraCaminhao}%</p>
@@ -230,7 +261,7 @@ function criarNotificacao(camaraCaminhao, dadosCamaras) {
   } else {
     alertas.innerHTML += `
       <div class="emergencia">
-          <img src="assets/imagensdash/alarm.png">
+          <img id="img_popup" src="assets/imagensdash/alarm.png">
           <div>
               <h4>Emergência - Câmara ${camaraCaminhao}</h4>
               <p>Temperatura: ${tempCamaraCaminhao}°C, Umidade: ${umidCamaraCaminhao}%</p>

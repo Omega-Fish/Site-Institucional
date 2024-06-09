@@ -246,23 +246,8 @@
     </div>
     <div id="popup" class="popup">
         <h2>Notificações</h2>
-        <div class="alertas">
-            <div class="instavel">
-                <img src="../assets/imagensdash/atencao.png">
-                <div>
-                    <h4>Instabilidade - Câmara 2</h4>
-                    <p>Temperatura: 3°C, Umidade: 45%</p>
-                    <p>Data: 08/05/2024 - 09:50:45</p>
-                </div>
-            </div>
-            <div class="emergencia">
-                <img src="../assets/imagensdash/alarm.png">
-                <div>
-                    <h4>Emergência - Câmara 2</h4>
-                    <p>Temperatura: 5°C, Umidade: 20%</p>
-                    <p>Data: 08/05/2024 - 15:57:44</p>
-                </div>
-            </div>
+        <div id="alertas" class="alertas">
+            
         </div>
     </div>
     <div id="atualizacoes" class="atualizacoes">
@@ -298,18 +283,13 @@
 
     var camara = sessionStorage.getItem('camara')
     numCamara.innerHTML = `Câmara ${camara}`
-    console.log(camara)
 
     //Variáveis de Controle
-    var tempo = 5
-
     var temperatura_gauge = 0
     var umidade_gauge = 0
 
     var status_temperatura = 0
     var status_umidade = 0
-
-    var unidade_tempo = `Dias`
 
     function buscarDadosMes() {
         var idCamaraCaminhao = sessionStorage.getItem("idCamara")
@@ -324,7 +304,6 @@
     var lista_Umid = []
     var lista_HoraColeta = []
     function plotarGrafico(dados) {
-        console.log(dados)
         for (var i = 0; i < dados.length; i++) {
             lista_Temp.push(dados[i].SensorTemp)
             lista_Umid.push(dados[i].SensorUmid)
@@ -396,18 +375,35 @@
     
     }
 
-    var temperatura = 0;
-    var umidade = 0;
+    var temperatura = 0
+    var umidade = 0
+    var diaColeta = 0
+    var horaColeta = 0
     function buscarDadosReal() {
         var idCamaraCaminhao = sessionStorage.getItem("idCamara")
         fetch(`http://localhost:3333/camaras/${idCamaraCaminhao}/dados`).then((res) => {
             res.json().then((response) => {
                 temperatura = response[0].SensorTemp
                 umidade = response[0].SensorUmid
+                diaColeta = response[0].DiaColeta;
+                horaColeta = response[0].HoraColeta;
+
+                var dia = diaColeta.substring(0, 2)
+                var mes = diaColeta.substring(3, 5)
+                var ano = diaColeta.substring(6, 10)
+
+                var dataColeta = new Date(`${Number(mes)}/${Number(dia)}/${Number(ano)}`)
+                var dataAtual = new Date()
+
+                var msColeta = dataColeta.getTime()
+                var msAtual = dataAtual.getTime()
+                var msDiff = msAtual - msColeta
+
+                var dataAlerta = Math.round(msDiff / (1000 * 60 * 60 * 24))
 
                 mensagem_temperatura.innerHTML = `${temperatura}°C`
                 mensagem_umidade.innerHTML = `${umidade}%`
-                mensagem_tempo.innerHTML = `${tempo} ${unidade_tempo}`
+                mensagem_tempo.innerHTML = `${dataAlerta} Dias`
 
                 montarGauge(temperatura, umidade)
 
@@ -426,10 +422,39 @@
                 } else {
                     id_status_umidade.innerHTML = `<h4 style="color:red; margin-top: 45px;">Emergência</h4>`
                 }
+                criarNotificacao()
 
             });
         });
 
+    }
+
+    function criarNotificacao() {
+        
+        alertas.innerHTML = ''
+        if ((temperatura >= 2 && temperatura <= 4) || (umidade <= 50 && umidade >= 40)) {
+            alertas.innerHTML += `
+            <div class="instavel">
+                <img src="../assets/imagensdash/atencao.png">
+                <div>
+                    <h4>Instabilidade - Câmara ${camara}</h4>
+                    <p>Temperatura: ${temperatura}°C, Umidade: ${umidade}%</p>
+                    <p>Data: ${diaColeta} - ${horaColeta}</p>
+                </div>
+            </div>
+            `;
+        } else {
+            alertas.innerHTML += `
+            <div class="emergencia">
+                <img src="../assets/imagensdash/alarm.png">
+                <div>
+                    <h4>Emergência - Câmara ${camara}</h4>
+                    <p>Temperatura: ${temperatura}°C, Umidade: ${umidade}%</p>
+                    <p>Data: ${diaColeta} - ${horaColeta}</p>
+                </div>
+            </div>
+            `;
+        }
     }
 
     function montarGauge(temperatura, umidade) {
