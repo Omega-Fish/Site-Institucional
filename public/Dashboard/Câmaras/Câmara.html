@@ -541,11 +541,15 @@
                 }]
             },
 
+            tooltip: {
+                enabled: false
+            },
+
             series: [{
-                name: 'Speed',
+                name: 'Temperatura',
                 data: [temperatura],
                 tooltip: {
-                    valueSuffix: ' km/h'
+                    valueSuffix: ' °C'
                 },
                 dataLabels: {
                     format: '',
@@ -638,12 +642,12 @@
                 }]
             },
 
+            tooltip: {
+                enabled: false
+            },
+
             series: [{
-                name: 'Speed',
                 data: [umidade],
-                tooltip: {
-                    valueSuffix: ' km/h'
-                },
                 dataLabels: {
                     format: '',
                     borderWidth: 0,
