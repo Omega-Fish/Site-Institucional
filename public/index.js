@@ -138,7 +138,11 @@ function entrar() {
                 sessionStorage.ID_USUARIO = json.id;
                 sessionStorage.ID_EMPRESA = json.idEmpresa;
 
-                window.open("/Dashboard/DashboardHome.html", "_self");
+                if(json.email = 'suporte@omegafish.com' && chaveVar == 'b29846796f455fd23603b09226920624') {
+                  window.open("http://localhost:3330", "_self");
+                } else {
+                  window.open("/Dashboard/DashboardHome.html", "_self");
+                }
   
             });
   
